@@ -2,7 +2,7 @@
 <?php   
 session_start();
 include "./admincp/config/config.php";
-
+// session_destroy();
 if(isset($_GET['id'])){
  $temp = $_GET['id'];
  if($temp=="out"){

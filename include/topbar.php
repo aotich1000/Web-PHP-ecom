@@ -15,7 +15,7 @@
                 }
                 else if(isset($_SESSION['user'])){ 
                     $data = $_SESSION['user'];
-                   echo '<div>Xin chào, '.$data['hoten'] .',<a href="index.php?id=quanlytaikhoan">Quản lý tài khoản</a>.<a href="index.php?id=out">Đăng xuất</a></div>';
+                   echo '<div>Xin chào, '.$data['hoten'] .',<a class="qltk" href="index.php?id=quanlytaikhoan">Quản lý tài khoản</a>.<a class="qltk" href="index.php?id=out">Đăng xuất</a></div>';
                 }
                 ?>
                

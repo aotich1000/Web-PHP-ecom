@@ -3,12 +3,12 @@
 
 // Connect database 
 include "admincp/config/config.php";
-$limit = 1;
+$limit = 12;
 
 if (isset($_GET['page_no'])) {
     $page_no = $_GET['page_no'];
 }else{
-    $page_no = 1;
+    $page_no = 12;
 }
 
 $loaisp1 = $_GET['loaisp'];
