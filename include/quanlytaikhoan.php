@@ -177,7 +177,7 @@ if($actionql =='suatttk'){
                             <label for="newpassword">Mật khẩu mới</label><br>
                             <input type="password" name="newpassword" id="newpassword"><br>
                             <label for="renewpasswor">Nhập lại mật khẩu</label><br>
-                            <input type="password" name="renewpasswor" id="renewpasswor"><br><br>
+                            <input type="password" name="renewpassword" id="renewpassword"><br><br>
                             <button type="submit">Thực hiện</button>
                     </form>
                     <button type="submit" onclick="window.history.back(-1)">Trở lại</button>

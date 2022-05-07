@@ -24,6 +24,9 @@ if(isset($_GET['id'])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/myjs.js" type="text/javascript"></script>
+    <style>
+        <?php include "./css/style.css"?>
+    </style>
     <title>Ai shop</title>
 </head>
 <body>
