@@ -14,10 +14,12 @@
                 <?php
                 }
                 else if(isset($_SESSION['user'])){ 
-                    $data = $_SESSION['user'];
-                   echo '<div>Xin chào, '.$data['hoten'] .',<a class="qltk" href="index.php?id=quanlytaikhoan">Quản lý tài khoản</a>.<a class="qltk" href="index.php?id=out">Đăng xuất</a></div>';
-                }
-                ?>
-               
+                    $data = $_SESSION['user'];?>
+                    <div>
+                        Xin chào, <?php echo $data['hoten'] ?> 
+                    <a class="qltk" href="index.php?id=quanlytaikhoan">Quản lý tài khoản</a>.
+                    <a class="qltk" href="index.php?id=out">Đăng xuất</a>
+                    </div>
+                   <?php }?>
             </div>
         </div>

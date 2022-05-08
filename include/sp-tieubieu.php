@@ -25,7 +25,9 @@
 
 </div>
 <div class="get-more">
+    <div>
     <a href="index.php?search=">Xem thêm >></a>
+    </div>
 </div>
 </div>
 

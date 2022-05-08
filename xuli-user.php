@@ -38,6 +38,7 @@
     }
     if($action == 'huydonhang'){
         $idhd2 = $_GET['idhd'];
+        echo $idhd2;
         $trangthai_moi = "Đã hủy";
         $sql_hhd1 = "UPDATE tbl_hoadon SET trangthai = '$trangthai_moi' WHERE id_hoadon = $idhd2";    
         $queryhhd1 = mysqli_query($con,$sql_hhd1);

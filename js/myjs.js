@@ -77,9 +77,8 @@ function Xoagiohang(id){
   }
 }
 function XoaHD(id){
-  if(confirm("Bạn có muốn xóa hay không?")){
-    var duongdan = "xuli-user.php?action=huydonhang&idhd="+id;
-    document.getElementById("xoahd").href=duongdan;
+  if(confirm("Bạn có muốn hủy đơn hàng hay không?")){
+    document.getElementById("xoahd").href= "xuli-user.php?action=huydonhang&idhd="+id;
   }
 }
 

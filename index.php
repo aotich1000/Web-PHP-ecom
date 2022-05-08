@@ -27,6 +27,9 @@ if(isset($_GET['id'])){
     <style>
         <?php include "./css/style.css"?>
     </style>
+    <script type="text/javascript">
+        <?php include "./js/myjs.js"?>
+    </script>
     <title>Ai shop</title>
 </head>
 <body>

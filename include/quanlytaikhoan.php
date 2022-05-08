@@ -85,16 +85,20 @@
 ?>
 <div>
     <div class="title"><h3>Hóa đơn đã mua</h3></div>
-    <?php while($hd = mysqli_fetch_assoc($queryhd)){ 
-        if($hd['trangthai'] != "Đã hủy"){ ?>
-    <div>
+    <?php while($hd = mysqli_fetch_assoc($queryhd)){  ?>
+    <div class="Hoa-don">
         <h4>Thông tin hóa đơn ngày <?php echo $hd['date']?></h4>
         <ul>
             <li>Địa chỉ: <?php echo $hd['diachi']?></li>
             <li>Số điện thoại: <?php echo $hd['sdt']?></li>
             <li>Phương thức thanh toán: <?php echo $hd['pptt']?></li>
-            <li>Trạng thái hóa đơn: <?php echo $hd['trangthai']?></li>
+            <li>Trạng thái: <?php echo $hd['trangthai']?></li>
             <li>Tổng hóa đơn: <?php echo number_format($hd['tong_tien'])?>đ</li>
+            <?php if($hd['trangthai'] == 'Chưa xử lí'){
+                if($hd['trangthai'] != "Đã hủy"){?>       
+                <li> <button> <a href="" id="xoahd" onclick="XoaHD(<?php echo $hd['id_hoadon']?>)">Hủy đơn hàng</a></button></li>
+        <?php }}?>
+            
         </ul>
         <?php   $idhd = $hd['id_hoadon'];
                 $sql_chd = "SELECT * FROM tbl_chitiethoadon,tbl_sanpham WHERE tbl_chitiethoadon.id_sanpham = tbl_sanpham.id_sanpham AND tbl_chitiethoadon.id_hoadon = $idhd";
@@ -125,13 +129,10 @@
                 </tr>
                 <?php $i++;}?>
             </table>
-                    <?php if($hd['trangthai'] == 'Chưa xử lí'){?>
-                    <div><a href="" id="xoahd" onclick="XoaHD(<?php echo $hd['id_hoadon']?>)">Hủy đơn hàng</a></div>
-        </div>
-    </div>
-    <?php }?>
 </div>
-<?php }}
+</div>
+</div>
+<?php }
 ?>
          <div class="pagi">
         <ul class="pagination justify-content-center">

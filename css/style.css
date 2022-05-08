@@ -1,6 +1,7 @@
 @font-face {
+  src: url(../font/Roboto-Regular.ttf);
   font-family: Roboto;
-  src: url(../font/Roboto-Black.ttf);
+  
 }
 
 .qltk a{
@@ -913,4 +914,12 @@ body{
 .get-more div{
   float: right;
   margin-right: 15px;
+}
+
+.Hoa-don {
+  display: flex;
+  width: 100%;
+  height: auto;
+  margin-left: 5px;
+  margin-top: 15px;
 }
