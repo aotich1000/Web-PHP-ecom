@@ -27,8 +27,8 @@
 </script>
 <div class="menu">
           <ul>
-              <li><a href="index.php">Trang chủ</a></li>
-              <li> <a href="">Phân loại</a>
+              <li class="item-menu"><a href="index.php">Trang chủ</a></li>
+              <li class="item-menu"> <a href="">Phân loại</a>
               <div class="dropdown">
               <ul>
               <?php 

@@ -15,11 +15,21 @@
                 }
                 else if(isset($_SESSION['user'])){ 
                     $data = $_SESSION['user'];?>
+                   
                     <div>
-                        Xin chào, <?php echo $data['hoten'] ?> 
-                    <a class="qltk" href="index.php?id=quanlytaikhoan">Quản lý tài khoản</a>.
-                    <a class="qltk" href="index.php?id=out">Đăng xuất</a>
+                    <div class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">  
+                    <img src="images/icon-user.png" alt="anhdaidien" class="user-icon">
+                     <?php echo $data['hoten'] ?>
                     </div>
+                    <div class="dropdown-menu dropdown-menu-right">
+                    <a class="qltk dropdown-item" href="index.php?id=quanlytaikhoan">Quản lý tài khoản</a>.
+                    <a class="qltk dropdown-item" href="index.php?id=out">Đăng xuất</a>
+                        </div>  
+                    </div>
+
+
+
+
                    <?php }?>
             </div>
         </div>
