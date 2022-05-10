@@ -139,10 +139,10 @@
         <?php
         for ($i=1; $i <= $page; $i++) { if($pg == $i){
                 ?>
-                <a href="index.php?id=quanlytaikhoan&action=showhoadon&page=<?php echo $i?>" class="page-link"> <li class="page-item active"><?php echo $i ?></li></a>
+                 <li class="page-item active"><a href="index.php?id=quanlytaikhoan&action=showhoadon&page=<?php echo $i?>" class="page-link"> <?php echo $i ?></a></li>
             <?php }else{
                 ?>
-                <a href="index.php?id=quanlytaikhoan&action=showhoadon&page=<?php echo $i?>" class="page-link"> <li class="page-item"><?php echo $i ?></li></a>
+                <li class="page-item"><a href="index.php?id=quanlytaikhoan&action=showhoadon&page=<?php echo $i?>" class="page-link"> <?php echo $i ?></a></li>
                 <?php
             }}
             ?>

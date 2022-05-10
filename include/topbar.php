@@ -5,10 +5,10 @@
                    ?>
                     <div>
                 <div>
-                    <a href="signup.php"><button>Đăng ký</button></a>
+                    <a href="index.php?id=signup"><button>Đăng ký</button></a>
                 </div>
                 <div>
-                <a href="signin.php"><button>Đăng nhập</button></a>
+                <a href="index.php?id=signin"><button>Đăng nhập</button></a>
                 </div>
                 </div>
                 <?php

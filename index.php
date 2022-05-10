@@ -53,6 +53,12 @@ if(isset($_GET['id'])){
                         include "include/chitiet-sp.php";
                     }if($id == 'quanlytaikhoan'){
                         include "include/quanlytaikhoan.php";
+                    }if($id =='signin'){
+                        include "include/sign-in.php";
+                    }if($id == 'signup'){
+                        include "include/sign-up.php";
+                    }if($id == 'shop-cart'){
+                        include "include/shop-cart.php";
                     }
                 } else 
                 if(isset($_GET['search'])){

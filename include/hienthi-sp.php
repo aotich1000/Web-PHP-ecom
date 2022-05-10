@@ -121,19 +121,19 @@
             if($key == 'Tất cả sản phẩm'){                
             for ($i=1; $i <= $page; $i++) { if($pg == $i){
                 ?>
-                <a href="index.php?search=&page=<?php echo $i?>" class="page-link"> <li class="page-item active"><?php echo $i ?></li></a>
+                <li class="page-item active"><a href="index.php?search=&page=<?php echo $i?>" class="page-link"> <?php echo $i ?></a></li>
             <?php }else{
                 ?>
-                <a href="index.php?search=&page=<?php echo $i?>" class="page-link"> <li class="page-item"><?php echo $i ?></li></a>
+                <li class="page-item"><a href="index.php?search=&page=<?php echo $i?>" class="page-link"> <?php echo $i ?></a></li>
                 <?php
             }} }
             else
             for ($i=1; $i <= $page; $i++) { if($pg == $i){
                 ?>
-                <a href="index.php?search=<?php echo $key?>&page=<?php echo $i?>" class="page-link"> <li class="page-item active"><?php echo $i ?></li></a>
+                <li class="page-item active"><a href="index.php?search=<?php echo $key?>&page=<?php echo $i?>" class="page-link"> <?php echo $i ?></a></li>
             <?php }else{
                 ?>
-                <a href="index.php?search=<?php echo $key?>&page=<?php echo $i?>" class="page-link"> <li class="page-item"><?php echo $i ?></li></a>
+                <li class="page-item"><a href="index.php?search=<?php echo $key?>&page=<?php echo $i?>" class="page-link"> <?php echo $i ?></a></li>
             <?php
             }
             

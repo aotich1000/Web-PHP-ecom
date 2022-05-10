@@ -12,7 +12,7 @@
                     </form> 
             </div>
             <div class="shop-cart">
-                <a href="shop-cart.php"><img src="./images/shop-cart.png" alt="shop-cart"></a>
+                <a href="index.php?id=shop-cart"><img src="./images/shop-cart.png" alt="shop-cart"></a>
             </div>
         </div>
    

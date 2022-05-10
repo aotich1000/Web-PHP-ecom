@@ -26,7 +26,7 @@
     }
         if($action == 'update'){
             $_SESSION['cart'][$id]['soluong']=$soluong;
-            header('location:shop-cart.php');
+            header('location:index.php?id=shop-cart');
         }
         //them san pham vao gio hang
         if($action == 'add'){
@@ -43,17 +43,17 @@
         if($action == 'addnow'){
             if(isset($_SESSION['cart'][$id])){
                 $_SESSION['cart'][$id]['soluong'] +=$soluong;
-                header('location:shop-cart.php');
+                header('location:index.php?id=shop-cart');
             }
             else{
             $_SESSION['cart'][$id] = $item;
-            header('location:shop-cart.php');
+            header('location:index.php?id=shop-cart');
             }
         } 
         //xoa gio hang khoi gio hang
         if($action == 'delete'){
             unset($_SESSION['cart'][$id]);
-            header('location: shop-cart.php');
+            header('location: index.php?id=shop-cart');
         }
         if($action == 'thanhtoan'){
             $tongtien = $_POST['tongtien'];
@@ -100,6 +100,6 @@
             }
         }
     }else{
-        header('location: signin.php');
+        header('location: index.php?id=signin');
     }
 ?>

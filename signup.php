@@ -6,6 +6,8 @@
 
         include "admincp/config/config.php"; 
         header('Content-Type: text/html; charset=UTF-8');
+        session_start();
+        
         //kiểm tra conect database        
         $err = [];
         
@@ -35,7 +37,8 @@
 
 
             if(empty($username)){
-                $err["username"]='Bạn chưa nhập tên đăng nhập';
+                $_SESSION['error']["username"]='Bạn chưa nhập tên đăng nhập';
+                header('location:index.php?id=signup&trangthai=error');
             }
             if (mysqli_num_rows(mysqli_query($con,"SELECT user_name FROM tbl_user WHERE user_name='$username'")) > 0){
                 ?>
@@ -46,148 +49,46 @@
                 <?php 
             }
             if(empty($hoten)){
-                $err["hoten"]='Bạn chưa nhập họ và tên';
+                $_SESSION['error']["hoten"]='Bạn chưa nhập họ và tên';
+                header('location:index.php?id=signup');
             }
             if(empty($password)){
-                $err["password"]='Bạn chưa nhập mật khẩu';
+                $_SESSION['error']["password"]='Bạn chưa nhập mật khẩu';
+                header('location:index.php?id=signup');
             }
             if(empty($rpassword)){
-                $err["rpassword"]='Bạn chưa nhập lại mật khẩu';
+                $_SESSION['error']["rpassword"]='Bạn chưa nhập lại mật khẩu';
+                header('location:index.php?id=signup');
             }
             if($password != $rpassword){
-                $err["rpassword"]='Mật khẩu nhập lại không đúng';
+                $_SESSION['error']["rpassword"]='Mật khẩu nhập lại không đúng';
+                header('location:index.php?id=signup');
             }
             if(empty($email)){
-                $err["email"]='Bạn chưa nhập email';
+                $_SESSION['error']["email"]='Bạn chưa nhập email';
+                header('location:index.php?id=signup');
             }
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $err["email"]= 'Nhập sai email';
+                $_SESSION['error']["email"]= 'Nhập sai email';
+                header('location:index.php?id=signup');
               }
               if (mysqli_num_rows(mysqli_query($con,"SELECT email FROM tbl_user WHERE email='$email'")) > 0)
               {
-                  $err["email"]= 'Email đã tồn tại';
+                $_SESSION['error']["email"]= 'Email đã tồn tại';
+                  header('location:index.php?id=signup');
               }
             if(empty($sdt)){
-                $err["sdt"]='Bạn chưa nhập số điện thoại';
+                $_SESSION['error']["sdt"]='Bạn chưa nhập số điện thoại';
+                header('location:index.php?id=signup');
             }
             
-            if(empty($err)){
+            if(empty($_SESSION['error'])){
                 $pass = password_hash($password,PASSWORD_DEFAULT);
                 $sql = ("INSERT INTO tbl_user(hoten,sdt,email,user_name,password) VALUES ('{$hoten}','{$sdt}','{$email}','{$username}','{$pass}')");
                 $query=mysqli_query($con,$sql); 
                 if($query){
-                    header('Location: signin.php?id=tk');
+                    header('Location: index.php?id=signin&trangthai=dktk');
                 }   
             }
         }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <style>    <?php include "css/style.css"?></style>
-    
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
-
-    <script src="js/myjs.js"></script>
-    <title>Đăng ký</title>
-    </head>
-<body>
-    <div class="wrapper">
-    <?php include "include/topbar.php"?>
-    <?php include "./include/header.php" ?>
-    <?php include "./include/menu.php" ?>
-
-    <script>
-        function checkdangnhap(){
-            var tendn = document.getElementById("username").value;
-            
-            function check(tendn){
-                $.ajax({
-                    url: "checktendn.php",
-                    type: "GET",
-                    cache: false,
-                    data:{tendn : tendn},
-                    success: function(data){
-                        $("#tendn").html(data);
-                    }
-                });   
-            };
-            check(tendn);
-        }
-    </script>
-    <div class="sign-in">
-        <div class="title-dk">
-                <h1>Đăng ký</h1>
-        </div>
-        <div class="sign-form">
-        <form action="signup.php" method="POST">
-        <div class="form-group">
-            <label for="hoten">Nhập họ và tên:</label> 
-            <div class="popup" onmouseover="popup()">*
-            <span class="popuptext" id="myPopup">Họ tên không chứa các ký tự đặc biệt, có thể có dấu.</span>
-            </div>
-            <br>
-            <input type="hoten" name="hoten" id="hoten" placeholder="Nhập Họ và tên:"><br>
-            <div class="err-mess"> <span> <?php echo (isset($err['hoten']))?$err['hoten']:'' ?></span> </div>
-            
-        </div> 
-        <div class="form-group">
-            <label for="username">Tên đăng nhập:</label>
-            <div class="popup" onmouseover="popup1()">*
-            <span class="popuptext" id="myPopup1">Tên đăng nhập dài 3-16 ký tự, chỉ có thể chứa 1 dấu "_"</span>
-            </div><br>
-            <input type="text" name="username" id="username" placeholder="Nhập tên đăng nhập" onchange="checkdangnhap()"> 
-            <div class="err-mess"> <span> <?php echo (isset($err['username']))?$err['username']:'' ?></span> </div>
-            <div class="err-mess" id="tendn"></div>
-        </div>
-        <div class="form-group">
-            <label for="password">Mật khẩu:</label>
-            <div class="popup" onmouseover="popup2()">*
-            <span class="popuptext" id="myPopup2">Mật khẩu dài 3-18 ký tự, không chứa ký tự đặc biệt</span>
-            </div><br>
-            <input type="password" name="password" id="password" placeholder="Nhập mật khẩu"><br>
-            <div class="err-mess"> <span> <?php echo (isset($err['password']))?$err['password']:'' ?></span> </div>
-        </div>
-        <div class="form-group">
-            <label for="rpassword">Nhập lại mật khẩu:</label><br>
-            <input type="password" name="rpassword" id="rpassword" placeholder="Nhập lại mật khẩu"><br>
-            <div class="err-mess"> <span> <?php echo (isset($err['rpassword']))?$err['rpassword']:'' ?></span> </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="sdt">Nhập số điện thoại:</label><br>
-            <input type="text" name="sdt" id="sdt" placeholder="Nhập số điện thoại"><br>
-            <div class="err-mess"> <span> <?php echo (isset($err['sdt']))?$err['sdt']:'' ?></span> </div>
-        </div>
-
-        <div class="form-group">
-            <label for="email">Nhập Email:</label>
-            <div class="popup" onmouseover="popup3()">*
-            <span class="popuptext" id="myPopup3">Chỉ nhận Gmail</span>
-            </div><br>
-            <input type="email" name="email" id="email" placeholder="Nhập Email"><br>
-            <div class="err-mess"> <span> <?php echo (isset($err['email']))?$err['email']:'' ?></span> </div>
-        </div>
-        <div class="form-submit">
-            <input type="submit" id="submit" value="Đăng ký" name="submit">
-        </div>
-        </form>
-    </div>
-
-    <div class="form-group">
-            Đã có tài khoản?<a href="signin.php"> Đăng nhập.</a>
-        </div>
-    </div>
-
-    <?php include "include/footer.php" ?>
-</div>
-</body>
-</html>

@@ -82,3 +82,42 @@ function XoaHD(id){
   }
 }
 
+function ktdangnhap(){
+  var tk = document.getElementById("username").value;
+  var ps = document.getElementById("password").value;
+  if (tk=="" || ps == ""){
+      alert ("Xin nhập đầy đủ thông tin");
+      return false;
+  } 
+}
+
+function checkdangnhap(){
+  var tendn = document.getElementById("username").value;
+  
+  function check(tendn){
+      $.ajax({
+          url: "checktendn.php",
+          type: "GET",
+          cache: false,
+          data:{tendn : tendn},
+          success: function(data){
+              $("#tendn").html(data);
+          }
+      });   
+  };
+  check(tendn);
+}
+
+
+function capnhat(id){
+  var soluong = document.getElementById.value();
+  $.ajax({
+      url: "cart.php",
+      type: "GET",
+      cache: false,
+      data:{id:id,soluong:soluong},
+      success: function(){
+
+      }
+  })
+}
