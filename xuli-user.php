@@ -10,9 +10,20 @@
         $email2 = $_POST['email'];
         $sdt2 = $_POST['sdt'];
         $sql_sua = "UPDATE `tbl_user` SET `hoten` = '$hoten2' ,`email` = '$email2',`sdt` = '$sdt2' WHERE `tbl_user`.`id_user` = $id_user2";
+        var_dump($sql_sua);
         $query_sua = mysqli_query($con,$sql_sua);
         if($query_sua){
-            header('location:index.php?id=quanlytaikhoan&&trangthai=themtk');  
+              
+            ?> <script type="text/javascript">
+                alert("Thao tác thành công!");
+            </script>
+                <?php
+                // location.href = 'signin.php';
+                $idus = $_SESSION['user']['id_user'];
+                $sql = mysqli_query($con,"SELECT * FROM tbl_user Where id_user = $idus");
+                $data = mysqli_fetch_assoc($sql); 
+                $_SESSION['user'] = $data;
+                header('location:index.php?id=quanlytaikhoan');
         }
     }
     if($action == 'repass'){

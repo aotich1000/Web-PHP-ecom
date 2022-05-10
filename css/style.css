@@ -646,6 +646,7 @@ body{
   box-shadow: 5px 10px #000 5px;
   height: auto;
   width: 100%;
+  border-top: #ccc solid 1px;
 }
 .create-by{
   position: relative;
@@ -874,8 +875,6 @@ body{
 .table-content{
   width: 100%;
   height: auto;
-  display: flex;
-  flex-wrap: wrap;
 }
 .table-content table{
   margin-left: 0.5%;
@@ -942,9 +941,88 @@ body{
 }
 
 .Hoa-don {
-  display: flex;
   width: 100%;
   height: auto;
   margin-left: 5px;
   margin-top: 15px;
+}
+
+
+.flex-container{
+  display: flex;
+  margin-top: 15px;
+}
+
+.flex-button{
+  display: flex;
+  
+}
+
+.flex-button button{
+  display: flex;
+  margin-right: 15px;
+  margin-top: 15px;
+  
+}
+
+.left-menu{
+  width: 25%;
+}
+
+.left-menu ul{
+  padding-left: 1em;
+}
+
+.left-menu ul li{
+  list-style: none;
+  margin-bottom: 5px;
+ 
+}
+
+.left-menu ul li a{
+  text-decoration: none;
+  color: #000;
+}
+
+.left-menu ul li button{
+  width: 98%;
+  text-align: left;
+  border-radius: 0px;
+  border: #ccc solid 1px;
+}
+
+.title-user{
+  border-bottom: #000 solid 1px;
+  width: 30%;
+}
+
+.title-user h3{
+  font-size: 25px;
+
+}
+
+.thong-tin-tk{
+  width: 100%;
+  padding-left: 15px;
+  border-left: #ccc solid 1px;
+  min-height: 500px;
+}
+
+.thong-tin-tk ul{
+  margin-top: 10px;
+  padding-left: 1em;
+  
+}
+
+.thong-tin-tk ul li{
+  margin-top: 5px;
+  list-style: none;
+}
+.thong-tin-tk a{
+  text-decoration: none;
+  color: #000;
+}
+
+.thong-tin-tk input{
+  margin-bottom: 5px;
 }

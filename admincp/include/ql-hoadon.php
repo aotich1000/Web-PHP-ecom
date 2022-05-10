@@ -72,7 +72,7 @@
 <div class="container-fluid">
 
                    <!-- Page Heading --> 
-                   <h1 class="h3 mb-2 text-gray-800">Quản lý tài khoản khách hàng</h1>
+                   <h1 class="h3 mb-2 text-gray-800">Quản lý tài khoản hóa đơn</h1>
                    <?php if($action == 'show'){?>
 
                     <!-- DataTales Example -->
