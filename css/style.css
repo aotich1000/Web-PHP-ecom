@@ -877,6 +877,7 @@ body{
   height: auto;
 }
 .table-content table{
+  margin-top: 10px;
   margin-left: 0.5%;
   width: 99%;
   padding: 10px;

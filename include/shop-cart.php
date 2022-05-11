@@ -11,13 +11,10 @@
         $sql = "SELECT sdt FROM tbl_user WHERE user_name = '$user'";
         $query = mysqli_query($con,$sql);
         $sdt = mysqli_fetch_assoc($query);
-
-        
         }
         else{
             header('location: index.php?id=signin');
         }
-
         ?>
 
 <div id="main">
@@ -30,9 +27,10 @@
             <?php 
             }
                 ?>
-        <div class="table-content">
-            <table>
+        <div>
+            <table class="table table-striped">
                 <tr>
+                    <th>STT</th>
                     <th>Ảnh</th>
                     <th>Tên sản phẩm</th>
                     <th>Số lượng</th>
@@ -40,8 +38,10 @@
                     <th>Thanh Tiền</th>
                     <th>Thao tác</th>
                 </tr>
-                <?php foreach ($cart as $key => $value): ?>
+                <?php   $i = 1;
+                foreach ($cart as $key => $value): ?>
                 <tr>
+                    <th> <?php echo $i++; ?></th>
                     <th><img src="./images/<?php echo $value['images']?>" alt=""></th>
                     <th><?php echo $value['name']?></th>
                     <form action="cart.php" method="GET">
@@ -61,13 +61,14 @@
                 <tr>
                     <th></th>
                     <th></th>
-                    <th><button type="submit"><a href="index.php">Trở lại trang chủ </a></button></th>
+                    <th><button type="submit"><a href="index.php" style="text-decoration: none; color:black">Trở lại trang chủ </a></button></th>
                     <th></th>
                     <th>Tổng tiền</th>
                     <th><?php echo number_format($endbill) ?> đ</th>
                 </tr>
             </table>
         </div>
+        <?php if($_SESSION['cart']){?>
         <div>
             <div>
                     <h1>Thanh toán</h1>
@@ -102,3 +103,5 @@
                 </form>
             </div>
         </div>
+
+        <?php }?>
