@@ -5,7 +5,7 @@
 ?>
 <div class="hot_deal">
 <div class="title_deal">
-    <h3><b>CÓ THỂ BẠN SẼ QUAN TÂM</b></h3>
+    <h3><b>Có thể bạn sẽ quan tâm</b></h3>
 </div>
 <div class="content-sp">
         <?php while($data = mysqli_fetch_array($query)){?>

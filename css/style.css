@@ -394,6 +394,7 @@ body{
     background-color: rgb(104, 155, 231);
     padding: 5px 6px;
     width: 40%;
+    border-top-right-radius: 35px;
 
 }
 .title_deal h3{
