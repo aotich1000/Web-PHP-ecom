@@ -1,29 +1,43 @@
 <?php
-if (isset($_POST['datefrom']))
-    $datefrom = $_POST['datefrom'];
+include "./config/config.php";
+if (isset($_GET['datefrom'])) {
+    $datefrom = $_GET['datefrom'];
+} else
+    $datefrom = '2020-01-01';
+if (isset($_GET['dateto']))
+    $dateto = $_GET['dateto'];
 else
-    $datefrom = '2021-01-01';
-if (isset($_POST['dateto']))
-    $dateto = $_POST['dateto'];
-else
-    $dateto = '2021-12-31';
-if (isset($_POST['type']))
-    $type = $_POST['type'];
+    $dateto = '2022-12-31';
+if (isset($_GET['type']))
+    $type = $_GET['type'];
 else
     $type = 'bar';
 $types = array("bar" => "Bar", "pie" => "Pie", "line" => "Line", "doughnut" => "Doughnut");
 
-
+$sql = "SELECT tbl_sanpham.ten_sanpham, tbl_chitiethoadon.id_sanpham, SUM(tbl_chitiethoadon.soluongsp) as 'so luong sp', SUM(tbl_chitiethoadon.id_sanpham * tbl_sanpham.gia) as 'tong tien' FROM tbl_chitiethoadon, tbl_hoadon, tbl_sanpham WHERE tbl_sanpham.id_sanpham = tbl_chitiethoadon.id_sanpham and tbl_hoadon.id_hoadon = tbl_chitiethoadon.id_hoadon and tbl_hoadon.date BETWEEN '" . $datefrom . "' and '" . $dateto . "' GROUP BY tbl_chitiethoadon.id_sanpham";
+$query = mysqli_query($con, $sql);
+foreach ($query as $row) {
+    $tensanpham[] = $row["ten_sanpham"];
+    $labeldoanhthu[] = $row["id_sanpham"];
+    $datadoanhthu[] = $row["tong tien"];
+}
 ?>
+<script>
+    var type = <?php echo json_encode($type); ?>;
+    var labelsanpham = <?php echo json_encode($tensanpham); ?>;
+    var labeldoanhthu = <?php echo json_encode($labeldoanhthu); ?>;
+    var datadoanhthu = <?php echo json_encode($datadoanhthu); ?>;
+</script>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
     <!-- Content Row -->
     <div class="row">
         <div class="col">
+
             <div class="row" style="margin-top: 10px;">
                 <div class="col-12">
-                    <form action="index.php" class="form" method="POST">
+                    <form action="index.php" class="form" method="GET">
                         <input type="input" hidden="true" class="form-control" name="id" value="thongke">
                         <div class="row">
                             <div class="col-4">
@@ -61,53 +75,21 @@ $types = array("bar" => "Bar", "pie" => "Pie", "line" => "Line", "doughnut" => "
                 </div>
             </div>
 
-            <!-- Area Chart -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+            <div class="row">
+                <div class="col-8 card shadow mb-3">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Thống kê doanh thu từ <?php echo $datefrom ?> đến <?php echo $dateto ?></h6>
                     </div>
-                    <hr>
-                    Styling for the area chart can be found in the
-                    <code>/js/demo/chart-area-demo.js</code> file.
-                </div>
-            </div>
-
-            <!-- Bar Chart -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-bar">
-                        <canvas id="myBarChart"></canvas>
+                    <div class="card-body">
+                        <canvas id="doanhthu"></canvas>
                     </div>
-                    <hr>
-                    Styling for the bar chart can be found in the
-                    <code>/js/demo/chart-bar-demo.js</code> file.
                 </div>
             </div>
 
 
-            <!-- Donut Chart -->
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="chart-pie pt-4">
-                        <canvas id="myPieChart"></canvas>
-                    </div>
-                    <hr>
-                    Styling for the donut chart can be found in the
-                    <code>/js/demo/chart-pie-demo.js</code> file.
-                </div>
-            </div>
+
+
+
         </div>
     </div>
 
