@@ -10,5 +10,3 @@
             header("location:index.php?id=quanlyhoadon&&trangthai=themtk");
         }
     }
-
-?>
