@@ -36,32 +36,9 @@
                 $_SESSION['user'] = $data;
 
             }
-            if($trangthai == 'saipass'){
-                ?> 
-                <script type="text/javascript"> 
-                    alert("Sai mật khẩu cũ! Mời thao tác lại");
-                    location.href = 'index.php?id=quanlytaikhoan&action=repass';
-                </script>
-                <?php
-            }if($trangthai =='sairepass'){
-                ?> 
-                <script type="text/javascript"> 
-                    alert("Mật khẩu nhập lại sai! Mời thao tác lại");
-                    location.href = 'index.php?id=quanlytaikhoan&action=repass';
-                </script>
-                <?php
-            }if($trangthai == 'huythanhcong'){
-                ?>
-                <script type="text/javascript"> 
-                    alert("Bạn đã hủy đơn hàng thành công!");
-                    location.href = 'index.php?id=quanlytaikhoan&action=showhoadon';
-                </script>
-                <?php 
-            }
-        }
-        $actionql = (isset($_GET['action'])) ? $_GET['action'] : 'showtttk';
-        if($actionql == 'showtttk'){
-?>
+            $actionql = (isset($_GET['action'])) ? $_GET['action'] : 'showtttk';
+            if ($actionql == 'showtttk') {
+    ?>
 
 
 <div class="thong-tin-tk">
@@ -278,4 +255,3 @@ if($actionql == 'chitiethoadon'){?>
 </div>
 <?php }}
 ?>
-

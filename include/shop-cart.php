@@ -18,13 +18,10 @@
         ?>
 
 <div id="main">
-            <?php if(isset($_GET['action'])=='tk'){?>
-                <script>
-                    if(alert("Bạn đã đặt hàng thành công!")){
-                        header('location:index.php?id=quanlytaikhoan');
-                    }
-                </script>
-            <?php 
+    <?php if (isset($_GET['action']) == 'tk') { ?>
+        <script>
+            if (alert("Bạn đã đặt hàng thành công!")) {
+                header('location:index.php?id=quanlytaikhoan');
             }
                 ?>
         <div>
@@ -45,16 +42,17 @@
                     <th><img src="./images/<?php echo $value['images']?>" alt=""></th>
                     <th><?php echo $value['name']?></th>
                     <form action="cart.php" method="GET">
-                    <th><input type="number" id="soluong" value="<?php echo $value['soluong']?>" onchange="return checksoluonggiohang(value,<?php echo $value['soluong-max']?>,<?php echo $value['soluong']?>)" name="soluong">
-                    <input type="hidden" value="<?php echo $value['id']?>" name="id">
-                    <input type="hidden" value="update" name="action">
-                    </th>
-                    <th><?php echo number_format($value['price'])?> đ</th>
-                    <th><?php echo number_format($bill = $value['price'] * $value['soluong']);
-                    $endbill = $endbill + $bill?> đ</th>
-                    <th>
-                    <button type="submit">Cập nhật</button> </form>
-                        <div><a href="" id="xoa" onclick=" return Xoagiohang(<?php echo $value['id']?>)"><button type="submit" >Xóa</button></a></div>
+                        <th><input type="number" id="soluong" value="<?php echo $value['soluong'] ?>" onchange="return checksoluonggiohang(value,<?php echo $value['soluong-max'] ?>,<?php echo $value['soluong'] ?>)" name="soluong">
+                            <input type="hidden" value="<?php echo $value['id'] ?>" name="id">
+                            <input type="hidden" value="update" name="action">
+                        </th>
+                        <th><?php echo number_format($value['price']) ?> đ</th>
+                        <th><?php echo number_format($bill = $value['price'] * $value['soluong']);
+                            $endbill = $endbill + $bill ?> đ</th>
+                        <th>
+                            <button type="submit">Cập nhật</button>
+                    </form>
+                    <div><a href="" id="xoa" onclick=" return Xoagiohang(<?php echo $value['id'] ?>)"><button type="submit">Xóa</button></a></div>
                     </th>
                 </tr>
                 <?php endforeach ?>
