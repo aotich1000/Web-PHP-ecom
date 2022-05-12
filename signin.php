@@ -9,6 +9,7 @@
             $username = $_POST["username"];
             $password = $_POST["password"];
 
+        //làm sạch thông tin, xóa bỏ các tag html, ký tự đặc biệt 
 		//mà người dùng cố tình thêm vào để tấn công theo phương thức sql injection
             $username = strip_tags($username);
 		    $username = addslashes($username);
