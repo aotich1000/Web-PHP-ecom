@@ -13,6 +13,7 @@ else
     $type = 'bar';
 $types = array("bar" => "Bar", "pie" => "Pie", "line" => "Line", "doughnut" => "Doughnut");
 
+
 ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
@@ -53,7 +54,7 @@ $types = array("bar" => "Bar", "pie" => "Pie", "line" => "Line", "doughnut" => "
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group" >
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary">Xác nhận</button>
                         </div>
                     </form>
