@@ -1,20 +1,20 @@
-
-<?php   
+<?php
 session_start();
 include "./admincp/config/config.php";
 // session_destroy();
-if(isset($_GET['id'])){
- $temp = $_GET['id'];
- if($temp=="out"){
-     session_destroy();
-     header('location:index.php');
- }}
- 
- ?>
- 
- 
+if (isset($_GET['id'])) {
+    $temp = $_GET['id'];
+    if ($temp == "out") {
+        session_destroy();
+        header('location:index.php');
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,59 +26,61 @@ if(isset($_GET['id'])){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/myjs.js" type="text/javascript"></script>
     <style>
-        <?php include "./css/style.css"?>
+        <?php include "./css/style.css" ?>
     </style>
     <script type="text/javascript">
-        <?php include "./js/myjs.js"?>
+        <?php include "./js/myjs.js" ?>
     </script>
     <title>Ai shop</title>
 </head>
+
 <body>
     <script>
-        
+
     </script>
     <div class="wrapper">
-    <div id="overlay"><div><img src="images/loading.gif" width="64px" height="64px"/></div></div>
+        <div id="overlay">
+            <div><img src="images/loading.gif" width="64px" height="64px" /></div>
+        </div>
         <?php include "include/topbar.php"; ?>
-        <?php   include "include/header.php"; ?>
-        <?php   include "include/menu.php";?>
+        <?php include "include/header.php"; ?>
+        <?php include "include/menu.php"; ?>
         <div class="conteiner" id="data">
         </div>
         <div id="main" id="main">
-             <?php 
-                if(isset($_GET['id'])){
-                    $id = $_GET['id'];
-                    
-                    if($id == 'chitiet-sp'){
-                        include "include/chitiet-sp.php";
-                    }if($id == 'quanlytaikhoan'){
-                        include "include/quanlytaikhoan.php";
-                    }if($id =='signin'){
-                        include "include/sign-in.php";
-                    }if($id == 'signup'){
-                        include "include/sign-up.php";
-                    }if($id == 'shop-cart'){
-                        include "include/shop-cart.php";
-                    }
-                } else 
-                if(isset($_GET['search'])){
-                    include "include/hienthi-sp.php";
+            <?php
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+
+                if ($id == 'chitiet-sp') {
+                    include "include/chitiet-sp.php";
                 }
-                else{
-                    include "include/banner.php";
-                    include "include/sp-tieubieu.php";
+                if ($id == 'quanlytaikhoan') {
+                    include "include/quanlytaikhoan.php";
                 }
+                if ($id == 'signin') {
+                    include "include/sign-in.php";
+                }
+                if ($id == 'signup') {
+                    include "include/sign-up.php";
+                }
+                if ($id == 'shop-cart') {
+                    include "include/shop-cart.php";
+                }
+            } else 
+                if (isset($_GET['search'])) {
+                include "include/hienthi-sp.php";
+            } else {
+                include "include/banner.php";
+                include "include/sp-tieubieu.php";
+            }
             ?>
-             <div class="clear">
+            <div class="clear">
             </div>
         </div>
 
-       
-      
-        <?php include "include/footer.php";?>
-       
-        
-        
+        <?php include "include/footer.php"; ?>
     </div>
 </body>
+
 </html>
