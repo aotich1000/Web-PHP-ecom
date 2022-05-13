@@ -125,6 +125,17 @@
                     </li>
             <?php }
             } ?>
+            <!-- Nav Item - Danh mục -->
+            <?php for ($i = 0; $i < count($quyenquanlyuser); $i++) {
+                if ($quyenquanlyuser[$i] == 'xem') {
+            ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?id=quanlydanhmuc">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Quản lý danh mục</span></a>
+                    </li>
+            <?php }
+            } ?>
             <!--  Nav item - Quản lý Sản phẩm-->
             <?php for ($i = 0; $i < count($quyenquanlysanpham); $i++) {
                 if ($quyenquanlysanpham[$i] == 'xem') {

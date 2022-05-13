@@ -2,7 +2,10 @@
 
     // include "./admincp/config/config.php";
     //     session_start();
-        if($_SESSION['user']){
+
+
+
+        if(!empty($_SESSION['user']) && isset($_SESSION['user'])){
         $cart = (isset($_SESSION['cart']))?$_SESSION['cart'] : [];
         $i = 1; 
         $endbill = 0;
@@ -11,19 +14,16 @@
         $sql = "SELECT sdt FROM tbl_user WHERE user_name = '$user'";
         $query = mysqli_query($con,$sql);
         $sdt = mysqli_fetch_assoc($query);
-        }
-        else{
-            header('location: index.php?id=signin');
-        }
         ?>
 
 <div id="main">
     <?php if (isset($_GET['action']) == 'tk') { ?>
-        <script>
+        <script type="text/javascript">
             if (alert("Bạn đã đặt hàng thành công!")) {
                 header('location:index.php?id=quanlytaikhoan');
             }
-                ?>
+            </script>
+                <?php }?>
         <div>
             <table class="table table-striped">
                 <tr>
@@ -66,7 +66,7 @@
                 </tr>
             </table>
         </div>
-        <?php if($_SESSION['cart']){?>
+        <?php if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])){?>
         <div>
             <div>
                     <h1>Thanh toán</h1>
@@ -102,4 +102,9 @@
             </div>
         </div>
 
-        <?php }?>
+        <?php }
+        }else{?>
+            <script>
+                location.href = 'index.php?id=signin';
+            </script>
+            <?php }?>

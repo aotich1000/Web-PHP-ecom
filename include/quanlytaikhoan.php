@@ -36,6 +36,7 @@
                 $_SESSION['user'] = $data;
 
             }
+        }
             $actionql = (isset($_GET['action'])) ? $_GET['action'] : 'showtttk';
             if ($actionql == 'showtttk') {
     ?>

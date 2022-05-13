@@ -65,6 +65,9 @@ $quyenquanlyhoadon = explode(',', $data1['qlhd']);
                 case 'quanlyhoadon':
                     include "include/ql-hoadon.php";
                     break;
+                case 'quanlydanhmuc':
+                    include "include/ql_danhmuc.php";
+                    break;
                 case 'thongke':
                     include "include/thongke.php";
                     break;

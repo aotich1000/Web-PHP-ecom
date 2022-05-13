@@ -119,6 +119,10 @@ body{
     display: none;
     
 }
+.dropdown ul li{
+  width: 9.1em;
+  
+}
 
 .item-menu{
   width: 12.5%;
@@ -439,7 +443,7 @@ body{
   position: relative;
   float: left;
   margin-right: 15px;
-  
+  text-align: center;
 }
 
 .card h4{
@@ -467,6 +471,7 @@ body{
   height: auto;
   transition: .5s ease;
   backface-visibility: hidden;
+  padding: 5px;
 }
 
 .middle{

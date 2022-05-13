@@ -98,7 +98,7 @@ if ($key == 'tatca') {
             <?php while ($data = mysqli_fetch_assoc($new_query)) { ?>
                 <div class="card">
                     <div class="card-container">
-                        <img src="images/<?php echo $data['images'] ?> " alt="Avatar" class="images">
+                        <img src="upload/<?php echo $data['images'] ?> " alt="Avatar" class="images">
                         <div class="middle">
                             <div><a href="cart.php?id=<?php echo $data['id_sanpham'] ?>">Thêm vào giỏ</a></div>
                             <div><a href="index.php?id=chitiet-sp&sp=<?php echo $data['id_sanpham'] ?>">Chi tiết</a></div>

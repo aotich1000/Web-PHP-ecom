@@ -72,7 +72,7 @@ if (isset($_GET['trangthai'])) {
                                 <th>ID sản phẩm</th>
                                 <th>Tên sản phẩm</th>
                                 <th>Loại sản phẩm</th>
-                                <th>Tên tài khoản</th>
+                                <th>Mô tả</th>
                                 <th>Giá </th>
                                 <th>Trạng thái</th>
                                 <th>Số lượng</th>
@@ -96,7 +96,7 @@ if (isset($_GET['trangthai'])) {
                                             echo "Hết hàng";
                                         } ?></td>
                                     <td><?php echo $data['soluong'] ?></td>
-                                    <td><img src="/project/images/<?php echo $data['images'] ?>" alt="111"></td>
+                                    <td><img src="/project/upload/<?php echo $data['images'] ?>" alt="111"></td>
                                     <td>
                                         <?php for ($i = 0; $i < count($quyenquanlysanpham); $i++) {
                                             if ($quyenquanlysanpham[$i] == 'xoa') {
@@ -196,7 +196,7 @@ if (isset($_GET['trangthai'])) {
                             } ?>
                         </select><br>
                         <label for="mota">Mô tả sản phẩm:</label><br>
-                        <input type="text" name="mota" id="mota" value="<?php echo $data1['mota'] ?>"><br>
+                        <textarea type="text" name="mota" id="mota" cols="40" rows="5"><?php echo $data1['mota'] ?> </textarea><br>
                         <label for="gia">Giá tiền:</label><br>
                         <input type="text" name="gia" id="gia" value="<?php echo $data1['gia'] ?>"><br>
                         <label for="trangthai">Trạng thái:</label><br>

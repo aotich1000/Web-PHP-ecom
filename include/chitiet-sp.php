@@ -8,7 +8,7 @@ $soluong = $data['soluong'];
 <div class="chitiet-sp">
     <form action="cart.php" method="GET">
         <div class="sp-anh">
-            <img src="images/<?php echo $data['images'] ?>" alt="#">
+            <img src="upload/<?php echo $data['images'] ?>" alt="#">
         </div>
         <div class="container-sp">
             <div class="title-sp">
@@ -16,8 +16,14 @@ $soluong = $data['soluong'];
             </div>
             <div class="content">
                 <div class="mota">
-                    Mô tả sản phẩm:
-                    <?php echo $data['mota'] ?>
+                    <b>Mô tả sản phẩm:</b>
+
+                    <?php 
+                    $mota = explode ( "\r\n" , $data['mota']);
+                   
+                    for($i=0;$i< count($mota); $i++){?>
+                    <p> <?php echo $mota[$i]; ?> </p> 
+                    <?php } ?>
                 </div>
                 <div class="loaisp">
                     <b>Loại sản phẩm:</b>
