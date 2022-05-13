@@ -241,7 +241,7 @@ if($actionql == 'chitiethoadon'){?>
                 ?>
                     <tr>
                         <th><?php echo $i?></th>
-                    <th><img src="./images/<?php echo $abc['images']?>" alt=""></th>
+                    <th><img src="./upload/<?php echo $abc['images']?>" alt="" style="max-width: 200px;"></th>
                     <th><?php echo $abc['ten_sanpham']?></th>
                     <form action="cart.php" method="GET">
                     <th><?php echo $abc['soluongsp']?>

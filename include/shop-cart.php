@@ -39,7 +39,7 @@
                 foreach ($cart as $key => $value): ?>
                 <tr>
                     <th> <?php echo $i++; ?></th>
-                    <th><img src="./images/<?php echo $value['images']?>" alt=""></th>
+                    <th><img src="./upload/<?php echo $value['images']?>" alt="" style="max-width: 200px;"></th>
                     <th><?php echo $value['name']?></th>
                     <form action="cart.php" method="GET">
                         <th><input type="number" id="soluong" value="<?php echo $value['soluong'] ?>" onchange="return checksoluonggiohang(value,<?php echo $value['soluong-max'] ?>,<?php echo $value['soluong'] ?>)" name="soluong">
