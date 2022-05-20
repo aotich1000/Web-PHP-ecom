@@ -4,6 +4,7 @@ if (isset($_GET['action'])) {
     $action = $_GET['action'];
     if ($action == 'themsp') {
         $tensanpham = $_POST['tensp'];
+
         $hinhanh = $_FILES['images']['name'];
 
         $trangthai = $_POST['trangthai'];
@@ -13,9 +14,12 @@ if (isset($_GET['action'])) {
         $mota = $_POST['mota'];
         $path = '../upload/';
 
+        $sql_checksp = "Select * from tbl_sanpham where ten_sanpham =  '$tensanpham' ";
+        
         $target_file = $path . basename($_FILES["images"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         if (isset($_POST['submit'])) {
+            if(!mysqli_query($con,$sql_checksp)){
             $check = getimagesize($_FILES["images"]["tmp_name"]);
             if ($check !== false) {
                 if ($_FILES["images"]["size"] <= 500000) {
@@ -29,6 +33,13 @@ if (isset($_GET['action'])) {
                     }
                 }
             }
+        }else
+         ?>
+            <script>
+                alert("Sản phẩm bị trùng");
+                history.go(-1);
+            </script>
+         <?php
         }
     }
     if ($action == 'sua') {

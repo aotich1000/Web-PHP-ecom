@@ -127,6 +127,12 @@ body{
 .item-menu{
   width: 12.5%;
 }
+.phanloai{
+  padding: 14px 16px;
+  color: white;
+  display: block;
+
+}
 .menu ul li:hover .dropdown{
     display: block;
     position: absolute;

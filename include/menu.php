@@ -24,17 +24,17 @@ $query = mysqli_query($con, $sql_loaisp);
         }, 500);
       }
     });
-    $(document).on("click", ".pagination li a", function(e) {
+    $(document).on("click", ".page-link", function(e) {
       e.preventDefault();
       var pageId = $(this).attr("id");
-      phanloai(pageId, loaisp);
+      phanloai(loaisp, pageId);
     });
   }
 </script>
 <div class="menu">
   <ul>
     <li class="item-menu"><a href="index.php">Trang chủ</a></li>
-    <li class="item-menu"> <a href="">Phân loại</a>
+    <li class="item-menu"> <a href=""> Phân loại </a>
       <div class="dropdown">
         <ul>
           <?php

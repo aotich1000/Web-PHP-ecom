@@ -8,9 +8,8 @@ $limit = 12;
 if (isset($_GET['page_no'])) {
     $page_no = $_GET['page_no'];
 } else {
-    $page_no = 12;
+    $page_no = 1;
 }
-
 $loaisp1 = $_GET['loaisp'];
 $offset = ($page_no - 1) * $limit;
 $query_loaisp = mysqli_query($con, "SELECT * FROM tbl_phanloaisp WHERE id_loaisp = $loaisp1");

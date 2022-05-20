@@ -1,5 +1,5 @@
 <?php
-$sql_sp_tieubieu = " SELECT * FROM tbl_sanpham ORDER BY id_sanpham DESC LIMIT 4";
+$sql_sp_tieubieu = " SELECT * FROM tbl_sanpham ORDER BY id_sanpham LIMIT 4";
 $query = mysqli_query($con, $sql_sp_tieubieu);
 ?>
 <div class="hot_deal">
