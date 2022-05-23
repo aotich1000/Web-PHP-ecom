@@ -26,7 +26,11 @@ if (isset($_POST["submit"])) {
     if ($checkUsername == 1) {
         $checkPass = password_verify($password, $data['password']);
         if ($checkPass) {
-            $_SESSION['user'] = $data;
+            $_SESSION['user']['hoten'] = $data['hoten'];
+            $_SESSION['user']['sdt'] = $data['sdt'];
+            $_SESSION['user']['id_user'] = $data['id_user'];
+            $_SESSION['user']['email'] = $data['email'];
+            $_SESSION['user']['user_name'] = $data['user_name'];
             header('location: index.php');
         } else {
             // $err['false'] = "Tài khoản hoặc mât khẩu sai.";
