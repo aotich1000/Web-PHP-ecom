@@ -26,7 +26,7 @@ if (isset($_GET['id'])) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/myjs.js" type="text/javascript"></script>
     <style>
-        <?php include "./css/style.css" ?>
+        <?php //include "./css/style.css" ?>
     </style>
     <script type="text/javascript">
         <?php include "./js/myjs.js" ?>
@@ -34,11 +34,8 @@ if (isset($_GET['id'])) {
     <title>Ai shop</title>
 </head>
 
-<body>
-    <script>
-
-    </script>
-    <div class="wrapper">
+<body class="container-fluid">
+    <div class="container">
         <div id="overlay">
             <div><img src="images/loading.gif" width="64px" height="64px" /></div>
         </div>

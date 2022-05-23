@@ -21,7 +21,7 @@
   border-radius: 35px;
 }
 body{
-    max-width: 1170px;
+    /* max-width: 1170px; */
     margin: 0 auto;
 }
 
@@ -115,10 +115,9 @@ body{
     padding: 14px 16px;
     text-decoration: none;
   }
-.dropdown{
-    display: none;
-    
-}
+/* .dropdown{
+    display: none;   
+} */
 .dropdown ul li{
   width: 9.1em;
   
