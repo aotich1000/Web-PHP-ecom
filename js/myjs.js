@@ -72,8 +72,8 @@ function addnow() {
 }
 function Xoagiohang(id) {
   if (confirm("Bạn có muốn xóa hay không?")) {
-    var duongdan = "cart.php?id=" + id + "&action=delete";
-    document.getElementById("xoa").href = duongdan;
+    location("cart.php?id=" + id + "&action=delete");
+    
   }
 }
 function XoaHD(id) {

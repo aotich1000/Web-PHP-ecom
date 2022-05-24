@@ -21,7 +21,7 @@
   border-radius: 35px;
 }
 body{
-    /* max-width: 1170px; */
+    max-width: 1170px;  
     margin: 0 auto;
 }
 
@@ -445,7 +445,7 @@ body{
 .card {
   /* Add shadows to create the "card" effect */
   margin: 7px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 18px 0 rgb(0 0 0 / 52%);
   transition: 0.3s;
   width: 23%;
   height: auto;
@@ -640,7 +640,7 @@ body{
 .title{
   border-bottom: 1px solid black;
   padding: 5px 6px;
-  width: 33%;
+  width: 34%;
 
 }
 .title h3{
@@ -866,6 +866,8 @@ body{
   display: flex;
   flex-wrap: wrap;
   float: left;
+  border-right: 1px solid #b7a2a2;
+  padding: 25px;
 }
 .sp-anh img{
   width: 100%;
@@ -910,7 +912,6 @@ body{
   width: 9%;
   text-align: center;
 }
-
 
 .top-bar {
   display: flex;

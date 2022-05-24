@@ -31,11 +31,10 @@ $soluong = $data['soluong'];
                 </div>
                 <div class="gia">
                     <b>Giá:</b>
-                    <?php echo number_format($data['gia']) ?>
-                    đ
+                    <?php echo number_format($data['gia']) ?> đ 
                 </div>
                 <div class="soluong">
-                    <b> Tình trạng hàng: </b>
+                    <b> Tình trạng: </b>
                     <?php if ($data['trangthai'] == 1) {
                         echo "Còn hàng";
                     } else if ($data['trangthai'] == 0) {
