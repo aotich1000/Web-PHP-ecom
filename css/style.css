@@ -40,7 +40,7 @@ body{
 }
 
 .logo {
-    height: 130px;
+    height: 100px;
     width: 20%;
     
 }
@@ -55,8 +55,8 @@ body{
 
 .search-box{
     height: 130px;
-    width: 55%;
-    margin-left: 4%;
+    /* width: 55%;
+    margin-left: 4%; */
 }
 
 .search-box form{
@@ -77,14 +77,16 @@ body{
 }
 
 .shop-cart{
-    height: auto;
-    width: 10%;
-    margin-top: 3%;
-    margin-left: 4%;
+    height: 50px;
+    /* width: 10%;
+    /* margin-top: 3%; */
+    margin: auto; 
 }
 .shop-cart img{
-    width: 50%;
+    width: auto;
+    max-width: 50px;
     height: auto;
+    max-height: 50px;
 }
 .menu{
     height: 50px;
@@ -108,24 +110,26 @@ body{
     float: left;
   }
   
-.menu li a {
+/* .menu li a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
+  } */
+
 /* .dropdown{
     display: none;   
-} */
+} 
+
 .dropdown ul li{
-  width: 9.1em;
-  
-}
+  width: 9.1em; 
+} */
 
 .item-menu{
   width: 12.5%;
 }
+
 .phanloai{
   padding: 14px 16px;
   color: white;
@@ -911,7 +915,7 @@ body{
 .top-bar {
   display: flex;
   flex-wrap: wrap;
-  
+  margin-top: 10px;
 }
 
 .log-field{
