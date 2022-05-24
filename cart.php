@@ -32,10 +32,10 @@ if ($_SESSION['user']) {
     if ($action == 'add') {
         if (isset($_SESSION['cart'][$id])) {
             $_SESSION['cart'][$id]['soluong'] += $soluong;
-            header('location:index.php');
+            ?><script>history.back(-1)</script><?php
         } else {
             $_SESSION['cart'][$id] = $item;
-            header('location:index.php');
+            ?><script>history.back(-1)</script><?php
         }
     }
     //them ngay
@@ -50,7 +50,7 @@ if ($_SESSION['user']) {
     }
     //xoa gio hang khoi gio hang
     if ($action == 'delete') {
-        unset($_SESSION['cart'][$id]);
+        unset($_SESSION['cart'][$id]);    
         header('location: index.php?id=shop-cart');
     }
     if ($action == 'thanhtoan') {
