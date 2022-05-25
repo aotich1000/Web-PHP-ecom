@@ -52,9 +52,18 @@ if (isset($_POST["username"])) {
         $_SESSION['error']["hoten"] = 'Bạn chưa nhập họ và tên';
         header('location:index.php?id=signup');
     }
+    if(!preg_match("a-zA-ZAÁÀẢÃẠÂẤẦẨẪẬĂẮẰẲẴẶEÉÈẺẼẸÊẾỀỂỄỆIÍÌỈĨỊOÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢUÚÙỦŨỤƯỨỪỬỮỰYÝỲỶỸỴĐaáàảãạâấầẩẫậăắằẳẵặeéèẻẽẹêếềểễệiíìỉĩịoóòỏõọôốồổỗộơớờởỡợuúùủũụưứừửữựyýỳỷỹỵđ]{1,55}",$hoten)){
+        $_SESSION['error']["hoten"] = 'Bạn chưa nhập sai định dạng họ và tên';
+    }
+    if(!preg_match("^[a-z0-9_-]{3,16}$",$username)){
+        $_SESSION['error']["username"] = 'Bạn chưa nhập sai định dạng tên đăng nhập';
+    }
     if (empty($password)) {
         $_SESSION['error']["password"] = 'Bạn chưa nhập mật khẩu';
         header('location:index.php?id=signup');
+    }
+    if(!preg_match("^[a-z0-9_-]{6,18}$",$password)){
+        $_SESSION['error']["password"] = 'Bạn chưa nhập sai định dạng mật khẩu';
     }
     if (empty($rpassword)) {
         $_SESSION['error']["rpassword"] = 'Bạn chưa nhập lại mật khẩu';

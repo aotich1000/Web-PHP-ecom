@@ -2,19 +2,16 @@
 include "config/config.php";
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
-    if ($action == 'themsp') {
-        $tensanpham = $_POST['tensp'];
+    if ($action == 'thembanner') {
+        $tensanpham = $_POST['ten_banner'];
 
         $hinhanh = $_FILES['images']['name'];
 
         $trangthai = $_POST['trangthai'];
-        $soluong = $_POST['soluong'];
-        $gia = $_POST['gia'];
-        $loaisp = $_POST['loaisp'];
-        $mota = $_POST['mota'];
+        
         $path = '../upload/';
 
-        $sql_checksp = "Select * from tbl_sanpham where ten_sanpham =  '$tensanpham' ";
+        $sql_checksp = "Select * from tbl_banner where ten_banner =  '$tensanpham' ";
         
         $target_file = $path . basename($_FILES["images"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -23,35 +20,32 @@ if (isset($_GET['action'])) {
             $check = getimagesize($_FILES["images"]["tmp_name"]);
             if ($check !== false) {
                 if ($_FILES["images"]["size"] <= 500000) {
-                    $sql_themsp = "INSERT INTO tbl_sanpham(ten_sanpham,loaisp,mota,gia,trangthai,soluong,images) 
-                                                VALUE ('$tensanpham','$loaisp','$mota','$gia','$trangthai','$soluong','$hinhanh')";
+                    $sql_themsp = "INSERT INTO tbl_banner(ten_banner,trangthai,images) 
+                                                VALUE ('$tensanpham','$trangthai','$hinhanh')";
                     $query_sp = mysqli_query($con, $sql_themsp);
                     if ($query_sp) {
                         $hinhanh_tmp = $_FILES['images']['tmp_name'];
                         move_uploaded_file($hinhanh_tmp, $target_file);
-                        header("location:index.php?id=quanlysanpham&&trangthai=themtk");
+                        header("location:index.php?id=quanlybanner&&trangthai=themtk");
                     }
                 }
             }
         }else
          ?>
             <script>
-                alert("Sản phẩm bị trùng");
+                alert("Banner bị trùng");
                 history.go(-1);
             </script>
          <?php
         }
     }
     if ($action == 'sua') {
-        $idsp = $_GET['id_sanpham'];
-        $tensanpham = $_POST['tensp'];
+        $idsp = $_GET['id_banner'];
+        $tensanpham = $_POST['ten_banner'];
         $hinhanh = $_FILES['images']['name'];
 
         $trangthai = $_POST['trangthai'];
-        $soluong = $_POST['soluong'];
-        $gia = $_POST['gia'];
-        $loaisp = $_POST['loaisp'];
-        $mota = $_POST['mota'];
+        
         $path = '../upload/';
 
         $target_file = $path . basename($_FILES["images"]["name"]);
@@ -61,18 +55,18 @@ if (isset($_GET['action'])) {
                 $check = getimagesize($_FILES["images"]["tmp_name"]);
                 if ($check !== false) {
                     if ($_FILES["images"]["size"] <= 500000) {
-                        $sql_themsp = "UPDATE `tbl_sanpham` SET `ten_sanpham`='$tensanpham',`loaisp`='$loaisp',`mota`='$mota',`gia`='$gia',`trangthai`='$trangthai',`soluong`='$soluong',`images`='$hinhanh' WHERE id_sanpham = $idsp";
+                        $sql_themsp = "UPDATE `tbl_banner` SET `ten_banner`='$tensanpham',`trangthai`='$trangthai',`images`='$hinhanh' WHERE id_banner = $idsp";
                         $query_sp = mysqli_query($con, $sql_themsp);
                         if ($query_sp) {
                             $hinhanh_tmp = $_FILES['images']['tmp_name'];
                             move_uploaded_file($hinhanh_tmp, $target_file);
-                            header("location:index.php?id=quanlysanpham&&trangthai=themtk");
+                            header("location:index.php?id=quanlybanner&&trangthai=themtk");
                         }
                     }
                 }
             }
         } else {
-            $sql_themsp = "UPDATE `tbl_sanpham` SET `ten_sanpham`='$tensanpham',`loaisp`='$loaisp',`mota`='$mota',`gia`='$gia',`trangthai`='$trangthai',`soluong`='$soluong' WHERE id_sanpham = $idsp";
+            $sql_themsp = "UPDATE `tbl_banner` SET `ten_banner`='$tensanpham',`trangthai`='$trangthai' WHERE id_banner = $idsp";
             $query_sp = mysqli_query($con, $sql_themsp);
             header("location:index.php?id=quanlysanpham&&trangthai=themtk");
         }
@@ -90,11 +84,11 @@ if (isset($_GET['action'])) {
         header("location:index.php?id=quanlysanpham&action=sua&id_sanpham=$idsp2");
     }
     if ($action == 'xoa') {
-        $idsp1 = $_GET['id_sanpham'];
-        $sql_xoasp = "DELETE FROM `tbl_sanpham` WHERE id_sanpham = $idsp1";
+        $idsp1 = $_GET['id_banner'];
+        $sql_xoasp = "DELETE FROM `tbl_banner` WHERE id_banner = $idsp1";
         $query_xoasp = mysqli_query($con, $sql_xoasp);
         if ($query_xoasp) {
-            header("location:index.php?id=quanlysanpham&&trangthai=themtk");
+            header("location:index.php?id=quanlybanner&&trangthai=themtk");
         }
     }
 }

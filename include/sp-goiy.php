@@ -1,5 +1,6 @@
 <?php
-$sql_sp_tieubieu = " SELECT * FROM tbl_sanpham ORDER BY id_sanpham DESC LIMIT 4";
+$idloaisp = $data['loaisp'];
+$sql_sp_tieubieu = "SELECT * FROM tbl_sanpham  Where loaisp='$idloaisp' ORDER BY RAND() LIMIT 4";
 $query = mysqli_query($con, $sql_sp_tieubieu);
 ?>
 <div class="hot_deal">

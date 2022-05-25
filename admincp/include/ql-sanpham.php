@@ -27,21 +27,7 @@ if (isset($_GET['trangthai'])) {
             $query_lp = mysqli_query($con, $sql_lp);
 
                     ?>
-<script>
-    function Xoasp(id) {
-        if (confirm("Bạn có muốn xóa không?")) {
-            var duongdan = "xuli-qlsp.php?action=xoa&id_sanpham=" + id;
-            document.getElementById("xoasp").href = duongdan;
-        }
-    }
 
-    function boanh(id) {
-        if (confirm("Bạn có muốn bỏ ảnh của sản phẩm này không?")) {
-            var duongdan = "xuli-qlsp.php?action=boanh&id_sanpham=" + id;
-            document.getElementById("boanh").href = duongdan;
-        }
-    }
-</script>
 
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -238,3 +224,19 @@ if (isset($_GET['trangthai'])) {
             </div>
 
         <?php } ?>
+
+
+
+        <script>
+    function Xoasp(id) {
+        if (confirm("Bạn có muốn xóa sản phẩm không?")) {
+            location.href = "xuli-qlsp.php?action=xoa&id_sanpham=" + id + "";
+        }
+    }
+
+    function boanh(id) {
+        if (confirm("Bạn có muốn bỏ ảnh của sản phẩm này không?")) {
+            location.href= "xuli-qlsp.php?action=boanh&id_sanpham=" + id;
+        }
+    }
+</script>

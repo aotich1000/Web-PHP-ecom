@@ -72,13 +72,13 @@ function addnow() {
 }
 function Xoagiohang(id) {
   if (confirm("Bạn có muốn xóa hay không?")) {
-    location("cart.php?id=" + id + "&action=delete");
+    location.href = "cart.php?id=" + id + "&action=delete";
     
   }
 }
 function XoaHD(id) {
   if (confirm("Bạn có muốn hủy đơn hàng hay không?")) {
-    document.getElementById("xoahd").href = "xuli-user.php?action=huydonhang&idhd=" + id;
+    location.href = "xuli-user.php?action=huydonhang&idhd=" + id;
   }
 }
 

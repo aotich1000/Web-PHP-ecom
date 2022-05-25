@@ -34,7 +34,7 @@ $query = mysqli_query($con, $sql_loaisp);
 <div class="menu">
   <ul>
     <li class="item-menu"><a href="index.php">Trang chủ</a></li>
-    <li class="item-menu"> <a href="index.php?search="> Phân loại </a>
+    <li class="item-menu"> <a href="index.php?search=" style="pointer-events: none;"> Phân loại </a>
       <div class="dropdown">
         <ul>
           <?php
