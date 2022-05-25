@@ -30,48 +30,46 @@ if (isset($_GET['id'])) {
 </head>
 
 <body class="container-fluid">
-    <div class="container">
-        <div id="overlay">
-            <div><img src="images/loading.gif" width="64px" height="64px" /></div>
-        </div>
-        <?php include "include/topbar.php"; ?>
-        <?php include "include/header.php"; ?>
-        <?php include "include/menu.php"; ?>
-        <div class="conteiner" id="data">
-        </div>
-        <div id="main" id="main">
-            <?php
-            if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-
-                if ($id == 'chitiet-sp') {
-                    include "include/chitiet-sp.php";
-                }
-                if ($id == 'quanlytaikhoan') {
-                    include "include/quanlytaikhoan.php";
-                }
-                if ($id == 'signin') {
-                    include "include/sign-in.php";
-                }
-                if ($id == 'signup') {
-                    include "include/sign-up.php";
-                }
-                if ($id == 'shop-cart') {
-                    include "include/shop-cart.php";
-                }
-            } else 
-                if (isset($_GET['search'])) {
-                include "include/hienthi-sp.php";
-            } else {
-                include "include/banner.php";
-                include "include/sp-tieubieu.php";
-            }
-            ?>
-            <div class="clear">
-            </div>
-        </div>
-        <?php include "include/footer.php"; ?>
+    <div id="overlay">
+        <div><img src="images/loading.gif" width="64px" height="64px" /></div>
     </div>
+    <?php include "include/topbar.php"; ?>
+    <?php include "include/header.php"; ?>
+    <?php include "include/menu.php"; ?>
+    <div class="conteiner" id="data">
+    </div>
+    <div id="main" id="main">
+        <?php
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+
+            if ($id == 'chitiet-sp') {
+                include "include/chitiet-sp.php";
+            }
+            if ($id == 'quanlytaikhoan') {
+                include "include/quanlytaikhoan.php";
+            }
+            if ($id == 'signin') {
+                include "include/sign-in.php";
+            }
+            if ($id == 'signup') {
+                include "include/sign-up.php";
+            }
+            if ($id == 'shop-cart') {
+                include "include/shop-cart.php";
+            }
+        } else 
+                if (isset($_GET['search'])) {
+            include "include/hienthi-sp.php";
+        } else {
+            include "include/banner.php";
+            include "include/sp-tieubieu.php";
+        }
+        ?>
+        <div class="clear">
+        </div>
+    </div>
+    <?php include "include/footer.php"; ?>
 </body>
 
 </html>
