@@ -8,11 +8,11 @@ if (isset($_GET['dateto']))
     $dateto = $_GET['dateto'];
 else
     $dateto = '2022-12-31';
-if (isset($_GET['type']))
-    $type = $_GET['type'];
-else
+// if (isset($_GET['type']))
+//     $type = $_GET['type'];
+// else
     $type = 'bar';
-$types = array("bar" => "Bar", "pie" => "Pie", "line" => "Line", "doughnut" => "Doughnut");
+// $types = array("bar" => "Bar", "pie" => "Pie", "line" => "Line", "doughnut" => "Doughnut");
 
 $sql = "SELECT tbl_sanpham.ten_sanpham, tbl_chitiethoadon.id_sanpham, SUM(tbl_chitiethoadon.soluongsp) as 'so luong sp', SUM(tbl_chitiethoadon.id_sanpham * tbl_sanpham.gia) as 'tong tien' FROM tbl_chitiethoadon, tbl_hoadon, tbl_sanpham WHERE tbl_sanpham.id_sanpham = tbl_chitiethoadon.id_sanpham and tbl_hoadon.id_hoadon = tbl_chitiethoadon.id_hoadon and tbl_hoadon.date BETWEEN '" . $datefrom . "' and '" . $dateto . "' GROUP BY tbl_chitiethoadon.id_sanpham";
 $query = mysqli_query($con, $sql);
@@ -52,21 +52,6 @@ foreach ($query as $row) {
                                     <input type="date" class="form-control" name="dateto" value=<?php echo $dateto; ?>>
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="form-group">
-                                    <label class="form-label" for="type">Loại</label>
-                                    <select class="form-control" name="type">
-                                        <?php
-                                        foreach ($types as $key => $value) {
-                                            if ($key == $type)
-                                                echo '<option value="' . $key . '" selected>' . $value . '</option>';
-                                            else
-                                                echo '<option value="' . $key . '">' . $value . '</option>';
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary">Xác nhận</button>
@@ -85,11 +70,6 @@ foreach ($query as $row) {
                     </div>
                 </div>
             </div>
-
-
-
-
-
         </div>
     </div>
 
@@ -113,22 +93,3 @@ foreach ($query as $row) {
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>

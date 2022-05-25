@@ -1,5 +1,5 @@
 <div class="top-bar">
-    <div class="log-field">
+    <!-- <div class="log-field">
         <?php if (!isset($_SESSION['user'])) {
         ?>
             <div>
@@ -24,5 +24,5 @@
                 </div>
             </div>
         <?php } ?>
-    </div>
+    </div> -->
 </div>

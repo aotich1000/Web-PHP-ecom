@@ -31,24 +31,26 @@ $query = mysqli_query($con, $sql_loaisp);
     });
   }
 </script>
-<div class="menu">
-  <ul>
-    <li class="item-menu"><a href="index.php">Trang chủ</a></li>
-    <li class="item-menu"> <a href="index.php?search=" style="pointer-events: none;"> Phân loại </a>
-      <div class="dropdown">
-        <ul>
-          <?php
-          while ($row_title = mysqli_fetch_array($query)) { ?>
-            <li>
-              <a id="loaisp" onclick="phanloai(<?php echo $row_title['id_loaisp'] ?>,1)">
-                <?php echo $row_title['ten_loaisp']; ?>
-              </a>
-            </li>
-          <?php
-          }
-          ?>
-        </ul>
-      </div>
-    </li>
-  </ul>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.php">Trang chủ</a>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Phân loại</a>
+          <ul class="dropdown-menu">
+            <?php
+            while ($row_title = mysqli_fetch_array($query)) { ?>
+              <li>
+                <a class="dropdown-item" id="loaisp" onclick="phanloai(<?php echo $row_title['id_loaisp'] ?>,1)">
+                  <?php echo $row_title['ten_loaisp']; ?>
+                </a>
+              </li>
+            <?php
+            }
+            ?>
+          </ul>
+        </li>
+    </div>
+  </nav>
 </div>
