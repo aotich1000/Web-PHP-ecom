@@ -12,6 +12,7 @@
                 </button>
             </form>
         </div>
+
         <div class="col d-flex align-items-center">
 
             <div class="shop-cart col-3">
@@ -28,14 +29,20 @@
             <?php
             } else if (isset($_SESSION['user'])) {
                 $data = $_SESSION['user']; ?>
-                <div>
-                    <div class="dropdown-toggle col-2" id="dropdownMenuButton" data-toggle="dropdown">
-                        <img src="images/icon-user.png" alt="anhdaidien" class="user-icon">
-                        <?php echo $data['hoten'] ?>
-                    </div>
-                    <div class="dropdown">
-                        <a class="dropdown-item" href="index.php?id=quanlytaikhoan">Quản lý tài khoản</a>.
-                        <a class="dropdown-item" href="index.php?id=out">Đăng xuất</a>
+                <div class=" col d-flex align-items-center justify-content-evenly">
+                    <img src="images/icon-user.png" alt="anhdaidien" class="img-icon user-icon">
+                    <div class="dropdown" id="dropdownMenuButton">
+                        <button class="fw-bolder btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
+                            <?php echo $data['hoten'] ?>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <a class="dropdown-item" href="index.php?id=quanlytaikhoan">Quản lý tài khoản</a>.
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="index.php?id=out">Đăng xuất</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             <?php } ?>
