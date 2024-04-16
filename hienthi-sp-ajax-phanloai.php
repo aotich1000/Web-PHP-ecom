@@ -3,6 +3,7 @@
 include "include/card.php";
 // Connect database 
 include "admincp/config/config.php";
+$con = connectToDatabase();
 $limit = 15;
 
 if (isset($_GET['page_no'])) {

@@ -1,5 +1,6 @@
 <?php
 include "admincp/config/config.php";
+$con = connectToDatabase();
 session_start();
 if ($_SESSION['user']) {
 

@@ -3,6 +3,7 @@
 
 // Connect database 
 include "admincp/config/config.php";
+$con = connectToDatabase();
 $limit = 12;
 
 if (isset($_POST['page_no'])) {

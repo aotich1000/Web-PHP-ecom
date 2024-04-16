@@ -1,5 +1,5 @@
 <?php
-include "./config/config.php";
+// include "./config/config.php";
 if (isset($_GET['datefrom'])) {
     $datefrom = $_GET['datefrom'];
 } else

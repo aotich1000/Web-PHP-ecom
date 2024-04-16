@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "config/config.php";
+$con = connectToDatabase();
 if (isset($_SESSION['admin']) == null) {
     header("location:login.php");
 }
@@ -118,6 +119,7 @@ $quyenquanlyhoadon = explode(',', $data1['qlhd']);
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="js/demo/chart-bar-demo.js"></script>
     <script src="js/chart.js"></script>
+    <script src="js/my-js.js"></script>
 </body>
 
 </html>

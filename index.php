@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "./admincp/config/config.php";
+$con = connectToDatabase();
 include "./include/card.php";
 // session_destroy();
 if (isset($_GET['id'])) {

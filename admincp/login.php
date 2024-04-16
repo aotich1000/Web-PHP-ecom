@@ -2,6 +2,7 @@
 session_start();
 
 include "config/config.php";
+$con = connectToDatabase();
 //kiểm tra conect database
 $err = [];
 if (isset($_POST["submit"])) {

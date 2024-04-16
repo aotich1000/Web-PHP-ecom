@@ -1,22 +1,16 @@
 
-    function checkDuplicate() {
-      var username = document.getElementById('username').value;
+        function search() {
+            // Ngăn chặn hành vi mặc định của form
+            Event.preventDefault();
 
-      // Gửi yêu cầu AJAX đến máy chủ PHP
-      $.ajax({
-        url: 'check_duplicate.php',
-        type: 'POST',
-        data: {username: username},
-        success: function(response) {
-          // Xử lý phản hồi từ máy chủ
-          if (response === 'duplicate') {
-            document.getElementById('result').innerHTML = 'Tên người dùng đã tồn tại.';
-          } else {
-            document.getElementById('result').innerHTML = 'Tên người dùng có thể sử dụng.';
-          }
+            // Lấy giá trị từ input
+            var searchValue = form.elements["search"].value;
+
+            // Tạo URL tùy chỉnh
+            var customURL = "/search?query=" + encodeURIComponent(searchValue);
+
+            alert(customURL);
+            // Chuyển hướng tới URL tùy chỉnh
+            // window.location.href = customURL;
         }
-      });
-    }
-
-
-    document.addEventListener('onChange')
+  

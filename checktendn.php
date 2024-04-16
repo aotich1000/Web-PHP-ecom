@@ -1,5 +1,6 @@
 <?php 
     include "admincp/config/config.php";
+    $con = connectToDatabase();
         $output ="";
         if(isset($_GET['tendn'])){
            

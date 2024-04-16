@@ -4,31 +4,72 @@ $action = (isset($_GET['action'])) ? $_GET['action'] : 'show';
 if (isset($_GET['trangthai'])) {
     $trangthai = $_GET['trangthai'];
     if ($trangthai = 'themtk') {
-?> <script>
+        ?> <script>
             alert("Thao tác thành công");
             location.href = "index.php?id=quanlysanpham";
         </script> <?php
                 }
             }
             $limit_pg = 5;
-            $sql = "SELECT * FROM tbl_sanpham";
-            $query = mysqli_query($con, $sql);
-            $row = mysqli_num_rows($query);
-            $page = ceil($row / $limit_pg);
             if (isset($_GET['page'])) {
                 $pg = $_GET['page'];
             } else {
                 $pg = 1;
             }
-            $start = ($pg - 1) * $limit_pg;
 
-            $sql_select_sp = mysqli_query($con, "SELECT * FROM tbl_sanpham,tbl_phanloaisp WHERE tbl_sanpham.loaisp=tbl_phanloaisp.id_loaisp LIMIT $start,$limit_pg");
+            if(isset($_GET['search'])){
+                $searchValue = $_GET['search'];
+            }else{
+                $searchValue = "";
+            }
+
+
+            $result_sp =  LoadSP($con, $searchValue, $pg, $limit_pg);
+            $sql_select_sp = $result_sp['result'];
+            $page = $result_sp['page'];
+
             $sql_lp = "SELECT * FROM tbl_phanloaisp";
             $query_lp = mysqli_query($con, $sql_lp);
 
-                    ?>
-
-
+            function LoadSP($conn, $searchValue, $pg, $limit_pg) {
+                // Xác định các tham số tìm kiếm
+                $searchValue = mysqli_real_escape_string($conn, $searchValue); // Bảo vệ dữ liệu đầu vào
+            
+                $sql = "SELECT * FROM tbl_sanpham";
+            
+                if (!empty($searchValue)) {
+                    $sql .= " WHERE ten_sanpham LIKE '%$searchValue%'";
+                }
+            
+                $query = mysqli_query($conn, $sql);
+                $row = mysqli_num_rows($query);
+                $page = ceil($row / $limit_pg);
+                $start = ($pg - 1) * $limit_pg;
+            
+                // Xây dựng câu truy vấn SQL
+                $sql_final = "SELECT * FROM tbl_sanpham, tbl_phanloaisp WHERE tbl_sanpham.loaisp = tbl_phanloaisp.id_loaisp";
+            
+                if (!empty($searchValue)) {
+                    $sql_final .= " AND ten_sanpham LIKE '%$searchValue%'";
+                }
+            
+                $sql_final .= " LIMIT $start, $limit_pg";
+            
+                $result = mysqli_query($conn, $sql_final);
+            
+                // Đóng gói kết quả và số lượng trang vào một mảng kết hợp
+                $data = array(
+                    'result' => $result,
+                    'page' => $page
+                );
+            
+                // Trả về mảng chứa kết quả và số lượng trang
+                return $data;
+            }
+                   
+                   
+                   
+?>
 
 <div class="container-fluid">
     <!-- Page Heading -->
@@ -37,7 +78,7 @@ if (isset($_GET['trangthai'])) {
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
+            <div class="card-header py-3 display-flex">
                 <?php for ($i = 0; $i < count($quyenquanlysanpham); $i++) {
                     if ($quyenquanlysanpham[$i] == 'them') {
                 ?>
@@ -49,7 +90,13 @@ if (isset($_GET['trangthai'])) {
                         </a>
                 <?php }
                 } ?>
-
+                <div class="form-search col-5 ">
+                    
+                        <form id="searchForm">
+                        <input type="text" name="search" id="search" class="form-control col-7 inline" placeholder="Nhập tên sản phẩm cần tìm">
+                        <button type="button" id="searchbtn" class="btn btn-primary">Tìm kiếm</button>
+                        </form>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -107,19 +154,12 @@ if (isset($_GET['trangthai'])) {
                     <div class="col-sm-12 col-md-7">
                         <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
                             <ul class="pagination">
-                                <?php for ($i = 1; $i <= $page; $i++) {
-
-                                    if ($i == $pg) {
-                                        $active = "active";
-                                ?>
-
-                                        <li class="paginate_button page-item <?php echo $active ?> "><a href="index.php?id=quanlysanpham&page=<?php echo $i ?>" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i ?></a></li>
-                                    <?php } else {
-                                    ?>
-                                        <li class="paginate_button page-item"><a href="index.php?id=quanlysanpham&page=<?php echo $i ?>" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i ?></a></li>
-                                <?php }
-                                }
-                                ?>
+                                <?php for ($i = 1; $i <= $page; $i++){
+                                    if ($i == $pg) {$active = "active";?>
+                                        <li class="paginate_button page-item <?php echo $active ?> "><a href="index.php?id=quanlysanpham&page=<?php echo $i ?>&&search=<?php echo $searchValue?>" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i ?></a></li>
+                                    <?php } else { ?>
+                                        <li class="paginate_button page-item"><a href="index.php?id=quanlysanpham&page=<?php echo $i ?>&&search=<?php echo $searchValue?> " aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link"><?php echo $i ?></a></li>
+                                <?php }} ?>
                         </div>
                     </div>
                 </div>
@@ -252,4 +292,17 @@ if (isset($_GET['trangthai'])) {
             location.href= "xuli-qlsp.php?action=boanh&id_sanpham=" + id;
         }
     }
+
+    document.getElementById("searchbtn").addEventListener("click", function(event) {
+        event.preventDefault();
+
+        // var searchValue = this.elements["search"].value;
+        
+        var searchValue = document.getElementById("search").value;
+
+        var customURL = "index.php?id=quanlysanpham&&search=" + encodeURIComponent(searchValue);
+
+        console.log(customURL);
+        window.location.href = customURL;
+    });
 </script>

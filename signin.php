@@ -3,6 +3,7 @@
 <?php
 session_start();
 include "admincp/config/config.php";
+$con = connectToDatabase();
 //kiểm tra conect database
 $err = [];
 if (isset($_POST["submit"])) {
