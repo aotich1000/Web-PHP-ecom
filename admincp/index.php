@@ -20,6 +20,10 @@ $quyenquanlyadmin = explode(',', $data1['qladmin']);
 $quyenquanlyuser = explode(',', $data1['qluser']);
 $quyenquanlysanpham = explode(',', $data1['qlsp']);
 $quyenquanlyhoadon = explode(',', $data1['qlhd']);
+$quyenquanlydanhmuc = explode(',', $data1['qlcate']);
+$quyenquanlybanner = explode(',', $data1['qlbanner']);
+$quyenquanlyncc = explode(',', $data1['qlncc']);
+$quyenquanlynhaphang = explode(',', $data1['qlnhaphang']);
 ?>
 <!DOCTYPE html>
 <html lang="en">

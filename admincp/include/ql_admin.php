@@ -15,6 +15,10 @@ if (isset($_GET['page'])) {
 $start = ($pg - 1) * $limit_pg;
 $new_sql = "SELECT * FROM tbl_admin LIMIT $start,$limit_pg";
 $newquery = mysqli_query($con, $new_sql);
+
+
+
+
 if (isset($_GET['trangthai'])) {
     $trangthai = $_GET['trangthai'];
     if ($trangthai = 'themtk') {
@@ -24,7 +28,6 @@ if (isset($_GET['trangthai'])) {
         </script> <?php
                 }
             }
-
                     ?>
 
 <script>
@@ -73,6 +76,66 @@ if (isset($_GET['trangthai'])) {
         }
         if (quyen == 'sua') {
             document.getElementById("qlsps").checked = true;
+        }
+    }
+
+    function checkqldm(quyen) {
+        if (quyen == 'xem') {
+            document.getElementById("qldmx").checked = true;
+        }
+        if (quyen == 'them') {
+            document.getElementById("qldmt").checked = true;
+        }
+        if (quyen == 'xoa') {
+            document.getElementById("qldmd").checked = true;
+        }
+        if (quyen == 'sua') {
+            document.getElementById("qldms").checked = true;
+        }
+    }
+
+    function checkqlbn(quyen) {
+        if (quyen == 'xem') {
+            document.getElementById("qlbnx").checked = true;
+        }
+        if (quyen == 'them') {
+            document.getElementById("qlbnt").checked = true;
+        }
+        if (quyen == 'xoa') {
+            document.getElementById("qlbnd").checked = true;
+        }
+        if (quyen == 'sua') {
+            document.getElementById("qlbns").checked = true;
+        }
+    }
+
+    function checkqlncc(quyen) {
+        if (quyen == 'xem') {
+            document.getElementById("qlnccx").checked = true;
+        }
+        if (quyen == 'them') {
+            document.getElementById("qlncct").checked = true;
+        }
+        if (quyen == 'xoa') {
+            document.getElementById("qlnccd").checked = true;
+        }
+        if (quyen == 'sua') {
+            document.getElementById("qlnccs").checked = true;
+        }
+    }
+
+    function checkqlnh(quyen) {
+        if (quyen == 'xem') {
+            document.getElementById("qlnhx").checked = true;
+        }
+        if (quyen == 'them') {
+            document.getElementById("qlnht").checked = true;
+        }
+        if (quyen == 'xoa') {
+            document.getElementById("qlnhd").checked = true;
+        }
+        if (quyen == 'sua') {
+            document.getElementById("qlnhs").checked = true;
         }
     }
 
@@ -244,6 +307,10 @@ if (isset($_GET['trangthai'])) {
         $quyenquanlyuser = explode(',', $data1['qluser']);
         $quyenquanlysanpham = explode(',', $data1['qlsp']);
         $quyenquanlyhoadon = explode(',', $data1['qlhd']);
+        $quyenquanlydanhmuc = explode(',', $data1['qlcate']);
+        $quyenquanlybanner = explode(',', $data1['qlbanner']);
+        $quyenquanlyncc = explode(',', $data1['qlncc']);
+        $quyenquanlynhaphang = explode(',', $data1['qlnhaphang']);
 ?>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -259,6 +326,10 @@ if (isset($_GET['trangthai'])) {
                             <th>Quản lý tài khoản khách hàng</th>
                             <th>Quản lý sản phẩm</th>
                             <th>Quản lý hóa đơn</th>
+                            <th>Quản lý danh mục</th>
+                            <th>Quản lý nhà cung cấp</th>
+                            <th>Quản lý Banner</th>
+                            <th>Quản lý nhập hàng</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -288,6 +359,30 @@ if (isset($_GET['trangthai'])) {
                                 <th>
                                     <input type="checkbox" id="qlhdx" name="qlhdx" value="xem"> Xem<br>
                                     <input type="checkbox" id="qlhdxl" name="qlhdxl" value="xuli"> Xử lí<br>
+                                </th>
+                                <th>
+                                    <input type="checkbox" id="qldmx" name="qldmx" value="xem"> Xem<br>
+                                    <input type="checkbox" id="qldmt" name="qldmt" value="them"> Thêm danh mục<br>
+                                    <input type="checkbox" id="qldmd" name="qldmd" value="xoa"> Xóa <br>
+                                    <input type="checkbox" id="qldms" name="qldms" value="sua"> Sửa<br>
+                                </th>
+                                <th>
+                                    <input type="checkbox" id="qlnccx" name="qlnccx" value="xem"> Xem<br>
+                                    <input type="checkbox" id="qlncct" name="qlncct" value="them"> Thêm nhà cung cấp<br>
+                                    <input type="checkbox" id="qlnccd" name="qlnccd" value="xoa"> Xóa <br>
+                                    <input type="checkbox" id="qlnccs" name="qlnccs" value="sua"> Sửa<br>
+                                </th>
+                                <th>
+                                    <input type="checkbox" id="qlbnx" name="qlbnx" value="xem"> Xem<br>
+                                    <input type="checkbox" id="qlbnt" name="qlbnt" value="them"> Thêm Banner<br>
+                                    <input type="checkbox" id="qlbnd" name="qlbnd" value="xoa"> Xóa <br>
+                                    <input type="checkbox" id="qlbns" name="qlbns" value="sua"> Sửa<br>
+                                </th>
+                                <th>
+                                    <input type="checkbox" id="qlnhx" name="qlnhx" value="xem"> Xem<br>
+                                    <input type="checkbox" id="qlnht" name="qlnht" value="them">Thêm phiếu nhập <br>
+                                    <input type="checkbox" id="qlnhd" name="qlnhd" value="xoa"> Xóa <br>
+                                    <input type="checkbox" id="qlnhs" name="qlnhs" value="sua"> Xử lí<br>
                                 </th>
 
                         </tr>
@@ -324,6 +419,34 @@ if (isset($_GET['trangthai'])) {
                     <script>
                         checkqlhd('<?php echo $quyenquanlyhoadon[$i] ?>')
                     </script>
-            <?php
+                <?php
                 }
+                for ($i = 0; $i < count($quyenquanlydanhmuc); $i++) {
+                    ?>
+                        <script>
+                            checkqldm('<?php echo $quyenquanlydanhmuc[$i] ?>')
+                        </script>
+                    <?php
+                }
+                for ($i = 0; $i < count($quyenquanlybanner); $i++) {
+                    ?>
+                        <script>
+                            checkqlbn('<?php echo $quyenquanlybanner[$i] ?>')
+                        </script>
+                    <?php
+                    }
+                 for ($i = 0; $i < count($quyenquanlyncc); $i++) {
+                    ?>
+                        <script>
+                            checkqlncc('<?php echo $quyenquanlyncc[$i] ?>')
+                        </script>
+                    <?php
+                    }
+                 for ($i = 0; $i < count($quyenquanlynhaphang); $i++) {
+                    ?>
+                        <script>
+                            checkqlnh('<?php echo $quyenquanlynhaphang[$i] ?>')
+                        </script>
+                    <?php
+                    }
             } ?>

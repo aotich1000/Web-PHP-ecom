@@ -68,7 +68,12 @@ if ($action == 'setquyen') {
     $qluser = "";
     $qlsp = "";
     $qlhd = "";
+    $qldm = "";
+    $qlbn = "";
+    $qlncc = "";
+    $qlnh = "";
 
+    //quản lý admin
     $qladx = (isset($_POST['qladx'])) ? $_POST['qladx'] : '';
     $qladt = (isset($_POST['qladt'])) ? $_POST['qladt'] : '';
     $qladrp = (isset($_POST['qladrp'])) ? $_POST['qladrp'] : '';
@@ -91,6 +96,7 @@ if ($action == 'setquyen') {
         $qladmin .= "$qladsq,";
     }
 
+    //quản lý khách hàng
     $qlkhx = (isset($_POST['qlkhx'])) ? $_POST['qlkhx'] : '';
     $qlkhth = (isset($_POST['qlkht'])) ? $_POST['qlkht'] : '';
     $qlkhrp = (isset($_POST['qlkhrp'])) ? $_POST['qlkhrp'] : '';
@@ -109,6 +115,7 @@ if ($action == 'setquyen') {
         $qluser .= "$qlkhs,";
     }
 
+    //quản lý sản phẩm
     $qlspx = (isset($_POST['qlspx'])) ? $_POST['qlspx'] : '';
     $qlspt = (isset($_POST['qlspt'])) ? $_POST['qlspt'] : '';
     $qlspd = (isset($_POST['qlspd'])) ? $_POST['qlspd'] : '';
@@ -127,6 +134,7 @@ if ($action == 'setquyen') {
         $qlsp .= "$qlsps,";
     }
 
+    //quản lý hóa đơn
     $qlhdx = (isset($_POST['qlhdx'])) ? $_POST['qlhdx'] : '';
     $qlhdxl = (isset($_POST['qlhdxl'])) ? $_POST['qlhdxl'] : '';
 
@@ -137,14 +145,91 @@ if ($action == 'setquyen') {
         $qlhd .= "$qlhdxl,";
     }
 
+    //quản lý danh mục
+    $qldmx = (isset($_POST['qldmx'])) ? $_POST['qldmx'] : '';
+    $qldmt = (isset($_POST['qldmt'])) ? $_POST['qldmt'] : '';
+    $qldmd = (isset($_POST['qldmd'])) ? $_POST['qldmd'] : '';
+    $qldms = (isset($_POST['qldms'])) ? $_POST['qldms'] : '';
+
+    if ($qldmx != '') {
+        $qldm .= "$qldmx,";
+    }
+    if ($qldmt != '') {
+        $qldm .= "$qldmt,";
+    }
+    if ($qldmd != '') {
+        $qldm .= "$qldmd,";
+    }
+    if ($qldms != '') {
+        $qldm .= "$qldms,";
+    }
+
+    //quản lý banner
+    $qlbnx = (isset($_POST['qlbnx'])) ? $_POST['qlbnx'] : '';
+    $qlbnt = (isset($_POST['qldmt'])) ? $_POST['qldmt'] : '';
+    $qlbnd = (isset($_POST['qlbnd'])) ? $_POST['qlbnd'] : '';
+    $qlbns = (isset($_POST['qlbns'])) ? $_POST['qlbns'] : '';
+
+    if ($qlbnx != '') {
+        $qlbn .= "$qlbnx,";
+    }
+    if ($qlbnt != '') {
+        $qlbn .= "$qlbnt,";
+    }
+    if ($qlbnd != '') {
+        $qlbn .= "$qlbnd,";
+    }
+    if ($qlbns != '') {
+        $qlbn .= "$qlbns,";
+    }
+
+    //quản lý nhà cung cấp
+    $qlnccx = (isset($_POST['qlnccx'])) ? $_POST['qlnccx'] : '';
+    $qlncct = (isset($_POST['qlncct'])) ? $_POST['qlncct'] : '';
+    $qlnccd = (isset($_POST['qlnccd'])) ? $_POST['qlnccd'] : '';
+    $qlnccs = (isset($_POST['qlnccs'])) ? $_POST['qlnccs'] : '';
+
+    if ($qlnccx != '') {
+        $qlncc .= "$qlnccx,";
+    }
+    if ($qlncct != '') {
+        $qlncc .= "$qlncct,";
+    }
+    if ($qlnccd != '') {
+        $qlncc .= "$qlnccd,";
+    }
+    if ($qlnccs != '') {
+        $qlncc .= "$qlnccs,";
+    }
+
+    //quản lý nhập hàng
+    $qlnhx = (isset($_POST['qlnhx'])) ? $_POST['qlnhx'] : '';
+    $qlnht = (isset($_POST['qlnht'])) ? $_POST['qlnht'] : '';
+    $qlnhd = (isset($_POST['qlnhd'])) ? $_POST['qlnhd'] : '';
+    $qlnhs = (isset($_POST['qlnhs'])) ? $_POST['qlnhs'] : '';
+
+    if ($qlnhx != '') {
+        $qlnh .= "$qlnhx,";
+    }
+    if ($qlnht != '') {
+        $qlnh .= "$qlnht,";
+    }
+    if ($qlnhd != '') {
+        $qlnh .= "$qlnhd,";
+    }
+    if ($qlnhs != '') {
+        $qlnh .= "$qlnhs,";
+    }
+
+
     $sql_check = "SELECT * FROM tbl_permission WHERE name = '$name'";
     $query_check = mysqli_query($con, $sql_check);
     if ($query_check) {
-        $sql_setquyen = "UPDATE `tbl_permission` SET `qladmin`='$qladmin',`qluser`='$qluser',`qlhd`='$qlhd',`qlsp`='$qlsp' WHERE name = '$name'";
+        $sql_setquyen = "UPDATE `tbl_permission` SET `qladmin`='$qladmin',`qluser`='$qluser',`qlhd`='$qlhd',`qlsp`='$qlsp',`qlcate`='$qldm',`qlncc`='$qlncc',`qlbanner`='$qlbn',`qlnhaphang`='$qlnh'  WHERE name = '$name'";
         $query_setquyen = mysqli_query($con, $sql_setquyen);
         header('location:index.php?id=quanlyadmin&&trangthai=themtk');
     } else {
-        $sql_setquyen = "INSERT INTO `tbl_permission`(`name`, `qladmin`, `qluser`, `qlhd`, `qlsp`) VALUES ('$name','$qladmin','$qluser','$qlhd','$qlsp')";
+        $sql_setquyen = "INSERT INTO `tbl_permission`(`name`, `qladmin`, `qluser`, `qlhd`, `qlsp`, `qlcate`, `qlbanner`, `qlncc`, `qlnhahang`) VALUES ('$name','$qladmin','$qluser','$qlhd','$qlsp','$qldm','$qlbn','$qlncc','$qlnh')";
         $query_setquyen = mysqli_query($con, $sql_setquyen);
         header('location:index.php?id=quanlyadmin&&trangthai=themtk');
     }

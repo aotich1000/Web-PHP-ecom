@@ -14,14 +14,15 @@
 
             <!-- Nav Item - Thống kê -->
             <!--  Nav item - Quản lý Sản phẩm-->
-            <?php for ($i = 0; $i < count($quyenquanlysanpham); $i++) {
-                if ($quyenquanlysanpham[$i] == 'xem') {
-            ?>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?id=thongke">
                             <i class="fas fa-fw fa-chart-area"></i>
                             <span>Thống kê</span></a>
                     </li>
+            <?php for ($i = 0; $i < count($quyenquanlysanpham); $i++) {
+                if ($quyenquanlysanpham[$i] == 'xem') {
+            ?>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?id=quanlysanpham">
                             <i class="fas fa-fw fa-table"></i>
@@ -53,16 +54,38 @@
                             <i class="fas fa-fw fa-table"></i>
                             <span>Quản lý tài khoản khách hàng</span></a>
                     </li>
+                   
+            <?php }
+            } ?>
+
+            <?php for ($i = 0; $i < count($quyenquanlydanhmuc); $i++) {
+                if ($quyenquanlydanhmuc[$i] == 'xem') {
+            ?>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?id=quanlydanhmuc">
                             <i class="fas fa-fw fa-table"></i>
                             <span>Quản lý danh mục</span></a>
                     </li>
+            <?php }
+            } ?>
+
+            <?php for ($i = 0; $i < count($quyenquanlyncc); $i++) {
+                if ($quyenquanlyncc[$i] == 'xem') {
+            ?>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?id=quanlynhacungcap">
                             <i class="fas fa-fw fa-table"></i>
                             <span>Quản lý nhà cung cấp</span></a>
                     </li>
+            <?php }
+            } ?>
+
+            <?php for ($i = 0; $i < count($quyenquanlybanner); $i++) {
+                if ($quyenquanlybanner[$i] == 'xem') {
+            ?>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?id=quanlybanner">
                             <i class="fas fa-fw fa-table"></i>
@@ -70,6 +93,22 @@
                     </li>
             <?php }
             } ?>
+
+            <?php for ($i = 0; $i < count($quyenquanlynhaphang); $i++) {
+                if ($quyenquanlynhaphang[$i] == 'xem') {
+            ?>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?id=quanlynhaphang">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Quản lý nhập hàng</span>
+                        </a>
+                    </li>
+            <?php }
+            } ?>
+
+
+
             <!--  Nav item - Quản lý Hóa đơn-->
             <?php for ($i = 0; $i < count($quyenquanlyhoadon); $i++) {
                 if ($quyenquanlyhoadon[$i] == 'xem') {
@@ -80,12 +119,7 @@
                             <span>Quản lý hóa đơn</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?id=quanlynhaphang">
-                            <i class="fas fa-fw fa-table"></i>
-                            <span>Quản lý nhập hàng</span>
-                        </a>
-                    </li>
+                    
             <?php }
             } ?>
             <!-- Divider -->
