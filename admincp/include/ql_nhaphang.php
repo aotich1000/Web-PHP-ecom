@@ -13,11 +13,11 @@ $limit_pg = 12;
 if (isset($_GET["datefrom"]) && isset($_GET["dateto"])) {
     $datefrom = $_GET["datefrom"];
     $dateto = $_GET["dateto"];
-    $sql = "SELECT * FROM tbl_phieunhap AND tbl_phieunhap.ngaynhap BETWEEN '" . $datefrom . "' AND '" . $dateto . "' ORDER BY tbl_phieunhap.ngaynhap DESC";
+    $sql = "SELECT * FROM tbl_phieunhap WHERE tbl_phieunhap.ngaynhap BETWEEN '" . $datefrom . "' AND '" . $dateto . "' ORDER BY tbl_phieunhap.ngaynhap DESC";
 } else if (isset($_POST["datefrom"]) && isset($_POST["dateto"])) {
     $datefrom = $_POST["datefrom"];
     $dateto = $_POST["dateto"];
-    $sql = "SELECT * FROM tbl_phieunhap AND tbl_phieunhap.ngaynhap BETWEEN '" . $datefrom . "' AND '" . $dateto . "' ORDER BY tbl_phieunhap.ngaynhap DESC";
+      $sql = "SELECT * FROM tbl_phieunhap WHERE tbl_phieunhap.ngaynhap BETWEEN '" . $datefrom . "' AND '" . $dateto . "' ORDER BY tbl_phieunhap.ngaynhap DESC";
 } else {
     $sql = "SELECT * FROM tbl_phieunhap ORDER BY tbl_phieunhap.ngaynhap DESC";
 }
@@ -37,7 +37,8 @@ if ($action == 'show') {
 if ($action == 'xemchitiet') {
     if (isset($_GET['idnhaphang'])) {
         $idnhaphang = $_GET['idnhaphang'];
-        $sql="SELECT * FROM tbl_chitietphieunhap WHERE id_phieunhap = 1";
+        // $sql_chitiet = "SELECT * FROM tbl_chitiethoadon,tbl_sanpham WHERE tbl_chitiethoadon.id_sanpham = tbl_sanpham.id_sanpham AND id_hoadon = $id_hd";
+        $sql="SELECT * FROM tbl_chitietphieunhap,tbl_sanpham,tbl_nhacungcap WHERE tbl_chitietphieunhap.id_sanpham = tbl_sanpham.id_sanpham AND tbl_chitietphieunhap.id_ncc = tbl_nhacungcap.id_nhacungcap  AND id_phieunhap = '$idnhaphang'";
         $query = mysqli_query($con, $sql);
         $row = mysqli_num_rows($query);
         $page = ceil($row / $limit_pg);
@@ -222,7 +223,9 @@ if (isset($_GET['xoa'])) {
         </div>
         
     <?php } ?>
-    <?php if ($action == 'xemchitiet') { ?>
+    <?php if ($action == 'xemchitiet') { 
+        
+        ?>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 Xem hóa đơn số <?php echo $idnhaphang;?>
@@ -233,7 +236,8 @@ if (isset($_GET['xoa'])) {
                         <thead>
                             <tr>
                                 <th>ID sản phẩm</th>
-                                <th>ID Nhà cung cấp</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Nhà cung cấp</th>
                                 <th>Số lượng</th>
                                 <th>Đơn giá</th>
                                 
@@ -244,7 +248,8 @@ if (isset($_GET['xoa'])) {
                             ?>
                                 <tr>
                                     <td><?php echo $data['id_sanpham'] ?></td>
-                                    <td><?php echo $data['id_ncc'] ?></td>
+                                    <td><?php echo $data['ten_sanpham'] ?></td>
+                                    <td><?php echo $data['tenncc'] ?></td>
                                     <td><?php echo $data['soluong'] ?></td>
                                     <td><?php echo number_format($data['dongia']) ?>đ</td>
                                 </tr>

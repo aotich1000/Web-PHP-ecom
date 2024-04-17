@@ -1,5 +1,6 @@
 <?php
 include "config/config.php";
+$con = connectToDatabase();
 session_start();
 if (isset($_POST['tdtrangthai'])) {
     $thanhtoan = $_POST['thanhtoan'];

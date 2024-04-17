@@ -1,5 +1,6 @@
 <?php
 include "config/config.php";
+$con = connectToDatabase();
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
     if ($action == 'thembanner') {

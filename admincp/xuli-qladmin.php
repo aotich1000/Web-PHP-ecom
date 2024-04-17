@@ -1,5 +1,6 @@
 <?php
 include "config/config.php";
+$con = connectToDatabase();
 $action = (isset($_GET['action'])) ? $_GET['action'] : 'themtk';
 
 

@@ -76,6 +76,9 @@ $quyenquanlyhoadon = explode(',', $data1['qlhd']);
                 case 'quanlydanhmuc':
                     include "include/ql_danhmuc.php";
                     break;
+                case 'quanlynhacungcap':
+                    include "include/ql_nhacungcap.php";
+                    break;
                 case 'quanlybanner':
                     include "include/ql_banner.php";
                     break;

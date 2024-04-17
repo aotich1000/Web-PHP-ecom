@@ -8,7 +8,7 @@ $action = (isset($_GET['action'])) ? $_GET['action'] : 'themtk';
 
 if ($action == 'themtk') {
     $hoten = $_POST['ten_loaisp'];
-    $sql_themtk = "INSERT INTO tbl_phanloaisp(ten_loaisp) 
+    $sql_themtk = "INSERT INTO tbl_nhacungcap(ten_ncc) 
                         VALUE ('{$hoten}')";
     $query = mysqli_query($con, $sql_themtk);
     if ($query) {

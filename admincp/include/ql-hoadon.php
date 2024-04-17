@@ -282,7 +282,7 @@ if (isset($_GET['trangthai'])) {
                                     <tr>
                                         <td><?php echo $i ?></td>
                                         <td><?php echo $data['id_sanpham'] ?></td>
-                                        <td><img src="/project/upload/<?php echo $data['images'] ?>" alt=""></td>
+                                        <td><img src="../upload/<?php echo $data['images'] ?>" alt=""></td>
                                         <td><?php echo $data['ten_sanpham'] ?></td>
                                         <td><?php echo $data['soluongsp'] ?></td>
                                         <td><?php echo number_format($data['gia']) ?>đ</td>

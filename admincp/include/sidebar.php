@@ -59,6 +59,11 @@
                             <span>Quản lý danh mục</span></a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="index.php?id=quanlynhacungcap">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Quản lý nhà cung cấp</span></a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="index.php?id=quanlybanner">
                             <i class="fas fa-fw fa-table"></i>
                             <span>Quản lý Banner</span></a>

@@ -1,6 +1,6 @@
 <?php 
     include "config/config.php";
-
+    $con = connectToDatabase();
     if(isset($_POST['tinhtrang'])){
         $trangthai = $_POST['tinhtrang'];
         $idhd = $_POST['id-hoadon'];
