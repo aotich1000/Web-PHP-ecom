@@ -43,7 +43,7 @@ if (isset($_GET['trangthai'])) {
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
+            <div class="card-header py-3 display-flex">
                 <?php for ($i = 0; $i < count($quyenquanlyuser); $i++) {
                     if ($quyenquanlyuser[$i] == 'them') {
                 ?>
@@ -55,6 +55,13 @@ if (isset($_GET['trangthai'])) {
                         </a>
                 <?php }
                 } ?>
+                <div class="form-search col-5 ">
+                    
+                    <form id="searchForm">
+                    <input type="text" name="search" id="search" class="form-control col-7 inline" placeholder="Nhập tên sản phẩm cần tìm">
+                    <button type="button" id="searchbtn" class="btn btn-primary">Tìm kiếm</button>
+                    </form>
+            </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
