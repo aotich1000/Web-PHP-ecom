@@ -173,7 +173,8 @@ if (isset($_GET['trangthai'])) {
     function xoa(id) {
         if (confirm("Bạn có muốn xóa chứ?")) {
             document.getElementById("xoa").href = "xuli-qladmin.php?action=xoa&&id-admin=" + id;
-        } else {}
+            
+        } 
     }
 
     
@@ -214,6 +215,8 @@ if (isset($_GET['trangthai'])) {
                             <tr>
                                 <th>ID Admin</th>
                                 <th>Tên</th>
+                                <th>Số điện thoại</th>
+                                <th>Email</th>
                                 <th>Tên tài khoản</th>
                                 <th>Thao tác thêm</th>
                             </tr>
@@ -224,6 +227,8 @@ if (isset($_GET['trangthai'])) {
                                 <tr>
                                     <td><?php echo $data['id_admin'] ?></td>
                                     <td><?php echo $data['name'] ?></td>
+                                    <td><?php echo $data['numbers'] ?></td>
+                                    <td><?php echo $data['email'] ?></td>
                                     <td><?php echo $data['user_name'] ?></td>
                                     <td>
                                         <?php for ($i = 0; $i < count($quyenquanlyadmin); $i++) {
@@ -243,6 +248,9 @@ if (isset($_GET['trangthai'])) {
                                                     <span class="text">Thiết lập quyền</span>
                                                 </a> <?php }
                                                 } ?>
+                                        <a href="" class="btn btn-secondary">
+                                            <span class="text">Sửa</span>
+                                        </a>
                                 </tr>
                             <?php } ?>
                         </tbody>
@@ -286,6 +294,10 @@ if (isset($_GET['trangthai'])) {
                 <input type="text" name="tendn" id="tendn" class="form-control col-4"><br>
                 <label for="password">Password</label><br>
                 <input type="text" name="password" id="password" class="form-control col-4"><br>
+                <label for="numbers">Số điện thoại</label><br>
+                <input type="text" name="numbers" id="numbers" class="form-control col-4"><br>
+                <label for="email">Email</label><br>
+                <input type="text" name="email" id="email" class="form-control col-4"><br>
                 <button type="submit" class="btn btn-primary">Thực hiện</button>
                 <button type="button" onclick="window.history.back(-1)" class="btn btn-primary">Trở lại</button>
             </form>

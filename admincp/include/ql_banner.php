@@ -90,6 +90,7 @@ if (isset($_GET['trangthai'])) {
                                 <th>STT</th>
                                 <th>Tên Banner</th>
                                 <th>Ảnh</th>
+                                <th>Thao tác</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -159,7 +160,7 @@ if (isset($_GET['trangthai'])) {
                         </select><br>
                         <label for="images">Ảnh sản phẩm:</label><br>
                         <input type="file" name="images" id="images" class="form-file col-4"><br><br>
-                        <button type="submit" class="btn btn-primary">Thực hiện</button>
+                        <button type="submit" id="submit" class="btn btn-primary">Thực hiện</button>
                     <button type="button" class="btn btn-primary" onclick="window.history.back(-1)">Trở lại</button>
                     </form>
         </div>

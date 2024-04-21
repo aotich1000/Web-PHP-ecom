@@ -10,9 +10,11 @@ if ($action == 'themtk') {
     $ten = $_POST['ten'];
     $username = $_POST['tendn'];
     $password = $_POST['password'];
+    $number = $_POST['numbers'];
+    $email = $_POST['email']; 
     $pass = password_hash($password, PASSWORD_DEFAULT);
-    $sql_themtk = "INSERT INTO tbl_admin(name,user_name,password) 
-                        VALUE ('{$ten}','{$username}','{$pass}')";
+    $sql_themtk = "INSERT INTO tbl_admin(name,user_name,password,numbers,email) 
+                        VALUE ('{$ten}','{$username}','{$pass}','{$number}','{$email}')";
     $sql_thempermiss = "INSERT INTO tbl_permission(name) 
          VALUE ('{$ten}')";
     $query_permiss = mysqli_query($con, $sql_thempermiss);

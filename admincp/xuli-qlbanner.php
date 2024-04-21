@@ -3,25 +3,27 @@ include "config/config.php";
 $con = connectToDatabase();
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
-    if ($action == 'thembanner') {
-        $tensanpham = $_POST['ten_banner'];
+    if ($action == 'themsp') {
+        $tensanpham = $_POST['tensp'];
 
         $hinhanh = $_FILES['images']['name'];
 
-        $trangthai = $_POST['trangthai'];
+        $trangthai = $_POST['loaisp'];
         
         $path = '../upload/';
 
         $sql_checksp = "Select * from tbl_banner where ten_banner =  '$tensanpham' ";
-        
+        $result_checkb = mysqli_query($con,$sql_checksp);
+        var_dump(mysqli_num_rows($result_checkb));
+        var_dump(isset($_POST['submit']));
         $target_file = $path . basename($_FILES["images"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        if (isset($_POST['submit'])) {
-            if(!mysqli_query($con,$sql_checksp)){
+            if(mysqli_num_rows($result_checkb)<1){
+                echo "true";
             $check = getimagesize($_FILES["images"]["tmp_name"]);
             if ($check !== false) {
-                if ($_FILES["images"]["size"] <= 500000) {
-                    $sql_themsp = "INSERT INTO tbl_banner(ten_banner,trangthai,images) 
+                if ($_FILES["images"]["size"] <= 50000000) {
+                    $sql_themsp = "INSERT INTO tbl_banner(ten_banner,trang_thai,images) 
                                                 VALUE ('$tensanpham','$trangthai','$hinhanh')";
                     $query_sp = mysqli_query($con, $sql_themsp);
                     if ($query_sp) {
@@ -31,11 +33,11 @@ if (isset($_GET['action'])) {
                     }
                 }
             }
-        }else
+        else
          ?>
             <script>
                 alert("Banner bị trùng");
-                history.go(-1);
+                // history.go(-1);
             </script>
          <?php
         }
@@ -85,7 +87,7 @@ if (isset($_GET['action'])) {
         header("location:index.php?id=quanlysanpham&action=sua&id_sanpham=$idsp2");
     }
     if ($action == 'xoa') {
-        $idsp1 = $_GET['id_banner'];
+        $idsp1 = $_GET['id-user'];
         $sql_xoasp = "DELETE FROM `tbl_banner` WHERE id_banner = $idsp1";
         $query_xoasp = mysqli_query($con, $sql_xoasp);
         if ($query_xoasp) {
