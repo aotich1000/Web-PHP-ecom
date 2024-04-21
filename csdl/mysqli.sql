@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 26, 2022 at 04:22 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.2
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th4 21, 2024 lúc 04:43 PM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,35 +18,37 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mysqli`
+-- Cơ sở dữ liệu: `mysqli`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_admin`
+-- Cấu trúc bảng cho bảng `tbl_admin`
 --
 
 CREATE TABLE `tbl_admin` (
   `id_admin` int(11) NOT NULL,
   `user_name` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `name` varchar(255) NOT NULL,
+  `numbers` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_admin`
+-- Đang đổ dữ liệu cho bảng `tbl_admin`
 --
 
-INSERT INTO `tbl_admin` (`id_admin`, `user_name`, `password`, `name`) VALUES
-(5, 'admin', '$2y$10$EjSK3mhaP/4Goemx/zq/NuzU.TpssBWUbZuZotNRt4DYE/L.VHUka', 'admin'),
-(8, 'admin1', '$2y$10$/MOr3htJKu6v9gc3q2gJyeIlSMQRXmjxQ2qTuUge1GJX6SVLoeivC', 'admin1'),
-(11, 'admin2', '$2y$10$ctcFV1rfDcfd1FrTFBFWNe6sWZ.8vTKe7sg49disTOqfmU.2AwDSC', 'admin2');
+INSERT INTO `tbl_admin` (`id_admin`, `user_name`, `password`, `name`, `numbers`, `email`) VALUES
+(8, 'admin', '$2y$10$/MOr3htJKu6v9gc3q2gJyeIlSMQRXmjxQ2qTuUge1GJX6SVLoeivC', 'admin', '031245678', 'helloworld@gmail.com'),
+(11, 'admin2', '$2y$10$ctcFV1rfDcfd1FrTFBFWNe6sWZ.8vTKe7sg49disTOqfmU.2AwDSC', 'admin2', '031245679', 'helloworld2@gmail.com'),
+(12, 'admin10', '$2y$10$ukIRp4KBOnm0X34eVUyjCuE7Byn7d758L8UDleJnGiQKGGdVDk19W', 'Nguyễn Văn Minh Quang', '0312456789', 'helloworld9@gmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_banner`
+-- Cấu trúc bảng cho bảng `tbl_banner`
 --
 
 CREATE TABLE `tbl_banner` (
@@ -54,45 +56,43 @@ CREATE TABLE `tbl_banner` (
   `ten_banner` varchar(255) NOT NULL,
   `images` varchar(255) NOT NULL,
   `trang_thai` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_banner`
+-- Đang đổ dữ liệu cho bảng `tbl_banner`
 --
 
 INSERT INTO `tbl_banner` (`id_banner`, `ten_banner`, `images`, `trang_thai`) VALUES
-(1, 'Banner 1', 'banner1.png', 'Hoạt động'),
-(2, 'Banner 2', 'Banner2.png', 'Hoạt động'),
-(3, 'Banner 3', 'Banner3.jpg', 'Hoạt động');
+(8, 'Banner mua 2', 'banner-mtb-1400x431.jpg', 'Hoạt động'),
+(9, 'Banner mua 1', 'banner-road-bike-1400x431.jpg', 'Hoạt động'),
+(10, 'Banner mua 3', 'banner-KID-1400x431.jpg', 'Hoạt động');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_chitiethoadon`
+-- Cấu trúc bảng cho bảng `tbl_chitiethoadon`
 --
 
 CREATE TABLE `tbl_chitiethoadon` (
   `id_hoadon` int(11) NOT NULL,
   `id_sanpham` int(50) NOT NULL,
   `soluongsp` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_chitiethoadon`
+-- Đang đổ dữ liệu cho bảng `tbl_chitiethoadon`
 --
 
 INSERT INTO `tbl_chitiethoadon` (`id_hoadon`, `id_sanpham`, `soluongsp`) VALUES
-(39, 57, 1),
-(39, 58, 1),
-(40, 46, 1),
-(40, 52, 1),
-(41, 29, 1),
-(42, 43, 1);
+(43, 68, 1),
+(43, 65, 1),
+(44, 71, 1),
+(44, 73, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_chitietphieunhap`
+-- Cấu trúc bảng cho bảng `tbl_chitietphieunhap`
 --
 
 CREATE TABLE `tbl_chitietphieunhap` (
@@ -101,21 +101,20 @@ CREATE TABLE `tbl_chitietphieunhap` (
   `id_ncc` int(11) NOT NULL,
   `soluong` int(11) NOT NULL,
   `dongia` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_chitietphieunhap`
+-- Đang đổ dữ liệu cho bảng `tbl_chitietphieunhap`
 --
 
 INSERT INTO `tbl_chitietphieunhap` (`id_phieunhap`, `id_sanpham`, `id_ncc`, `soluong`, `dongia`) VALUES
-(1, 16, 1, 100, 29690000),
-(10, 19, 1, 12, 16590000),
-(10, 44, 2, 3, 5000000);
+(17, 65, 1, 10, 890000),
+(17, 68, 2, 10, 1550000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_hoadon`
+-- Cấu trúc bảng cho bảng `tbl_hoadon`
 --
 
 CREATE TABLE `tbl_hoadon` (
@@ -128,31 +127,29 @@ CREATE TABLE `tbl_hoadon` (
   `pptt` varchar(100) NOT NULL,
   `trangthai` varchar(50) NOT NULL,
   `time` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_hoadon`
+-- Đang đổ dữ liệu cho bảng `tbl_hoadon`
 --
 
 INSERT INTO `tbl_hoadon` (`id_hoadon`, `id_user`, `diachi`, `tong_tien`, `sdt`, `date`, `pptt`, `trangthai`, `time`) VALUES
-(39, 1, 'TP.HCM', '10000000', '0123456781', '2022-05-13', 'Thanh toán khi nhận hàng', 'Chưa xử lí', '22-05-13 11:27:56 AM'),
-(40, 12, 'hello', '10000000', '0123456789', '2022-05-25', 'Ví điện tử', 'Đã hủy', '22-05-25 11:17:20 AM'),
-(41, 12, 'TP.HCM', '24000000', '0123456789', '2022-05-25', 'Ví điện tử', 'Đã hủy', '22-05-25 11:17:42 AM'),
-(42, 12, 'TP.HCM', '5000000', '0123456789', '2022-05-25', 'Ví điện tử', 'Đã hủy', '22-05-25 11:24:54 AM');
+(43, 12, 'abc', '2440000', '0123456789', '2024-04-11', 'Ví điện tử', 'Đã hủy', '24-04-11 11:17:56 PM'),
+(44, 12, '', '5340000', '0123456789', '2024-04-11', 'Ví điện tử', 'Đơn hàng đã hoàn tất', '24-04-11 11:25:56 PM');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_nhacungcap`
+-- Cấu trúc bảng cho bảng `tbl_nhacungcap`
 --
 
 CREATE TABLE `tbl_nhacungcap` (
   `id_nhacungcap` int(11) NOT NULL,
   `tenncc` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_nhacungcap`
+-- Đang đổ dữ liệu cho bảng `tbl_nhacungcap`
 --
 
 INSERT INTO `tbl_nhacungcap` (`id_nhacungcap`, `tenncc`) VALUES
@@ -162,7 +159,7 @@ INSERT INTO `tbl_nhacungcap` (`id_nhacungcap`, `tenncc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_permission`
+-- Cấu trúc bảng cho bảng `tbl_permission`
 --
 
 CREATE TABLE `tbl_permission` (
@@ -171,43 +168,55 @@ CREATE TABLE `tbl_permission` (
   `qladmin` varchar(255) NOT NULL,
   `qluser` varchar(255) NOT NULL,
   `qlhd` varchar(255) NOT NULL,
-  `qlsp` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `qlsp` varchar(255) NOT NULL,
+  `qlcate` varchar(255) NOT NULL,
+  `qlncc` varchar(255) NOT NULL,
+  `qlbanner` varchar(255) NOT NULL,
+  `qlnhaphang` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_permission`
+-- Đang đổ dữ liệu cho bảng `tbl_permission`
 --
 
-INSERT INTO `tbl_permission` (`id_permis`, `name`, `qladmin`, `qluser`, `qlhd`, `qlsp`) VALUES
-(1, 'admin', 'xem,them,repass,xoa,setquyen,', 'xem,them,repass,sua,', 'xem,xuli,', 'xem,them,xoa,sua,'),
-(5, 'admin1', '', '', '', ''),
-(8, 'admin2', '', '', '', '');
+INSERT INTO `tbl_permission` (`id_permis`, `name`, `qladmin`, `qluser`, `qlhd`, `qlsp`, `qlcate`, `qlncc`, `qlbanner`, `qlnhaphang`) VALUES
+(1, 'admin', 'xem,them,repass,xoa,setquyen,', 'xem,them,repass,sua,', 'xem,xuli,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,'),
+(5, 'admin1', '', '', '', '', '', '', '', ''),
+(8, 'admin2', '', '', '', '', '', '', '', ''),
+(9, 'Nguyễn Văn Minh Quang', 'xem,them,repass,xoa,setquyen,', 'xem,them,repass,sua,', 'xem,xuli,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,'),
+(10, 'Nguyễn Văn Minh Quang', 'xem,them,repass,xoa,setquyen,', 'xem,them,repass,sua,', 'xem,xuli,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,'),
+(11, 'Nguyễn Văn Minh Quang', 'xem,them,repass,xoa,setquyen,', 'xem,them,repass,sua,', 'xem,xuli,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,'),
+(12, 'Nguyễn Văn Minh Quang', 'xem,them,repass,xoa,setquyen,', 'xem,them,repass,sua,', 'xem,xuli,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,', 'xem,them,xoa,sua,');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_phanloaisp`
+-- Cấu trúc bảng cho bảng `tbl_phanloaisp`
 --
 
 CREATE TABLE `tbl_phanloaisp` (
   `id_loaisp` int(11) NOT NULL,
   `ten_loaisp` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_phanloaisp`
+-- Đang đổ dữ liệu cho bảng `tbl_phanloaisp`
 --
 
 INSERT INTO `tbl_phanloaisp` (`id_loaisp`, `ten_loaisp`) VALUES
-(1, 'APPLE'),
-(2, 'Xiaomi'),
-(3, 'OPPO'),
-(4, 'SamSung');
+(1, 'Xe đạp trẻ em'),
+(2, 'Xe đạp thể thao'),
+(3, 'Xe đạp địa hình'),
+(4, 'Xe đạp touring'),
+(7, 'Xe đạp đua'),
+(8, 'Xe đạp nữ'),
+(9, 'Xe đạp fixed gear'),
+(11, 'Xe đạp phổ thông');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_phieunhap`
+-- Cấu trúc bảng cho bảng `tbl_phieunhap`
 --
 
 CREATE TABLE `tbl_phieunhap` (
@@ -216,21 +225,21 @@ CREATE TABLE `tbl_phieunhap` (
   `soluong` int(11) NOT NULL,
   `tongtien` varchar(100) NOT NULL,
   `trangthai` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_phieunhap`
+-- Đang đổ dữ liệu cho bảng `tbl_phieunhap`
 --
 
 INSERT INTO `tbl_phieunhap` (`id_phieunhap`, `ngaynhap`, `soluong`, `tongtien`, `trangthai`) VALUES
-(1, '2021-03-01', 100, '2969000000', 'Đã nhận hàng. Đã thanh toán'),
-(9, '2022-05-26', 1, '29690000', 'Đã nhận hàng. Đã thanh toán'),
-(10, '2022-05-26', 15, '214080000', 'Đã nhận hàng. Đã thanh toán');
+(14, '2024-04-07', 10, '10900000', 'Đã nhận hàng. Đã thanh toán'),
+(16, '2024-04-11', 20, '24400000', 'Đã nhận hàng. Đã thanh toán'),
+(17, '2024-04-16', 20, '24400000', 'Chưa nhận hàng. Chưa thanh toán');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_sanpham`
+-- Cấu trúc bảng cho bảng `tbl_sanpham`
 --
 
 CREATE TABLE `tbl_sanpham` (
@@ -242,58 +251,30 @@ CREATE TABLE `tbl_sanpham` (
   `trangthai` varchar(11) NOT NULL,
   `images` varchar(255) NOT NULL,
   `soluong` int(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_sanpham`
+-- Đang đổ dữ liệu cho bảng `tbl_sanpham`
 --
 
 INSERT INTO `tbl_sanpham` (`id_sanpham`, `ten_sanpham`, `loaisp`, `mota`, `gia`, `trangthai`, `images`, `soluong`) VALUES
-(16, 'iPhone 13 Pro Max 128GB', 1, 'Hiệu năng vượt trội - Chip Apple A15 Bionic mạnh mẽ, hỗ trợ mạng 5G tốc độ cao\r\nKhông gian hiển thị sống động - Màn hình 6.7\" Super Retina XDR độ sáng cao, sắc nét\r\nTrải nghiệm điện ảnh đỉnh cao - Cụm 3 camera kép 12MP, hỗ trợ ổn định hình ảnh quang học\r\nTối ưu điện năng - Sạc nhanh 20 W, đầy 50% pin trong khoảng 30 phút\r\nTrải nghiệm điện ảnh đỉnh cao - Cụm 3 camera kép 12MP, hỗ trợ ổn định hình  ', '29690000', '1', 'iphone_13-_pro-5_1_1.jpg', 100),
-(17, 'iPhone 11 64GB', 1, 'Màu sắc phù hợp cá tính - 6 màu sắc bắt mắt để lựa chọn\r\nHiệu năng mượt mà, ổn định - Chip A13, RAM 4GB\r\nBắt trọn khung hình - Camera kép hỗ trợ góc rộng, chế độ Night Mode', '11790000', '1', 'iphone_11_white_4_.png', 100),
-(18, 'iPhone 12 Pro Max 128GB', 1, 'Mạnh mẽ, siêu nhanh với chip A14, RAM 6GB, mạng 5G tốc độ cao\r\nRực rỡ, sắc nét, độ sáng cao - Màn hình OLED cao cấp, Super Retina XDR hỗ trợ HDR10, Dolby Vision\r\nChụp ảnh siêu đỉnh - Night Mode , thuật toán Deep Fusion, Smart HDR 3, camera LiDar', '27000000', '1', 'iphone_12_pro_max_white_1.png', 100),
-(19, 'iPhone 12 64GB', 1, 'Mạnh mẽ, siêu nhanh với chip A14, RAM 4GB, mạng 5G tốc độ cao\r\nRực rỡ, sắc nét, độ sáng cao - Màn hình OLED cao cấp, Super Retina XDR hỗ trợ HDR10, Dolby Vision\r\nChụp đêm ấn tượng - Night Mode cho 2 camera, thuật toán Deep Fusion, Smart HDR 3', '16590000', '1', 'iphone-12_2__3.jpg', 100),
-(20, 'iPhone 13 128GB ', 1, 'Hiệu năng vượt trội - Chip Apple A15 Bionic mạnh mẽ, hỗ trợ mạng 5G tốc độ cao\r\nKhông gian hiển thị sống động - Màn hình 6.1\" Super Retina XDR độ sáng cao, sắc nét\r\nTrải nghiệm điện ảnh đỉnh cao - Camera kép 12MP, hỗ trợ ổn định hình ảnh quang học', '22200000', '1', 'iphone-13-02_4.jpg', 100),
-(21, 'iPhone 11 128GB', 1, 'Màu sắc phù hợp cá tính - 6 màu sắc bắt mắt để lựa chọn\r\nHiệu năng mượt mà, ổn định - Chip A13, RAM 4GB\r\nBắt trọn khung hình - Camera kép hỗ trợ góc rộng, chế độ Night Mode', '13350000', '1', 'iphone_11_white_4_.png', 100),
-(22, 'iPhone 13 Pro Max 128GB', 1, 'Kích thước màn hình	6.7 inches\r\nCông nghệ màn hình	OLED\r\nCamera sau	Camera góc rộng: 12MP, ƒ/1.5\r\nCamera góc siêu rộng: 12MP, ƒ/1.8\r\nCamera tele : 12MP, /2.8\r\nCamera trước	12MP, ƒ/2.2\r\nChipset	Apple A15\r\nBộ nhớ trong	128 GB\r\nPin	4,325mAh\r\nHệ điều hành	iOS15\r\nĐộ phân giải màn hình	2778 x 1284 pixel\r\nTính năng màn hình	120Hz, Super Retina XDR với ProMotion 6.1‑inch, OLED, 458 pp, HDR display, True Tone, Wide color (P3), Haptic Touch\r\nTrọng lượng	240g\r\nBluetooth	v5.0\r\nTần số quét	120Hz', '50000000', '1', 'iphone_13_pro_max_alpine_green_pure_back_iphone_13_pro_max_alpine_green_pure_front_2-up_screen__usen.png', 100),
-(23, 'iPhone 12 Pro Max 128GB', 1, 'Mạnh mẽ, siêu nhanh với chip A14, RAM 6GB, mạng 5G tốc độ cao\r\nRực rỡ, sắc nét, độ sáng cao - Màn hình OLED cao cấp, Super Retina XDR hỗ trợ HDR10, Dolby Vision\r\nChụp ảnh siêu đỉnh - Night Mode , thuật toán Deep Fusion, Smart HDR 3, camera LiDar', '24000000', '1', 'iphone_12_pro_max_white_1 (1).png', 100),
-(24, 'iPhone SE 2022', 1, 'Hiệu năng vượt trội với vi xử lý mới nhất - Chip Apple A15 tiên tiến nhất, cân mọi tác vụ\r\nTận hưởng không gian hiển thị sắc nét - Màn hình Liquid Retina nhỏ gọn 4.7 inch tỷ lệ 16:9\r\nGiải trí trọn vẹn ngày dài - Viên pin có nhiều cải tiến giúp bạn không còn lo lắng khi sử dụng', '10000000', '1', 'iphone-se-red-select-20220322.jpg', 100),
-(25, 'iPhone 13 128GB - Xanh lá', 1, 'Kích thước màn hình	6.1 inches\r\nCông nghệ màn hình	OLED\r\nCamera sau	Camera góc rộng: 12MP, f/1.6\r\nCamera góc siêu rộng: 12MP, ƒ/2.4\r\nCamera trước	12MP, f/2.2\r\nChipset	Apple A15\r\nBộ nhớ trong	128 GB\r\nPin	3,095mAh', '24000000', '1', 'iphone_13_green_pure_back_iphone_13_green_pure_front_2-up_screen__usen_1.png', 100),
-(26, 'iPhone 12 mini 64GB', 1, 'Mạnh mẽ, siêu nhanh với chip A14, RAM 4GB, mạng 5G tốc độ cao\r\nRực rỡ, sắc nét, độ sáng cao - Màn hình OLED cao cấp, Super Retina XDR hỗ trợ HDR10, Dolby Vision\r\nChụp đêm ấn tượng - Night Mode cho 2 camera, thuật toán Deep Fusion, Smart HDR 3', '15000000', '1', 'iphone_12_mini_blue (1).png', 100),
-(27, 'iPhone 12 Pro 128GB', 1, 'Mạnh mẽ, siêu nhanh với chip A14, RAM 6GB, mạng 5G tốc độ cao\r\nRực rỡ, sắc nét, độ sáng cao - Màn hình OLED cao cấp, Super Retina XDR hỗ trợ HDR10, Dolby Vision\r\nChụp ảnh siêu đỉnh - Night Mode , thuật toán Deep Fusion, Smart HDR 3, camera LiDar', '24000000', '1', 'iphone_12_pro_black (1).png', 100),
-(28, 'iPhone 12 Pro Max 512GB', 1, 'Mạnh mẽ, siêu nhanh với chip A14, RAM 6GB, mạng 5G tốc độ cao\r\nRực rỡ, sắc nét, độ sáng cao - Màn hình OLED cao cấp, Super Retina XDR hỗ trợ HDR10, Dolby Vision\r\nChụp ảnh siêu đỉnh - Night Mode , thuật toán Deep Fusion, Smart HDR 3, camera LiDar', '50000000', '1', 'iphone_12_pro_max_blue.png', 100),
-(29, 'iPhone 12 mini 128GB ', 1, 'Mạnh mẽ, siêu nhanh với chip A14, RAM 4GB, mạng 5G tốc độ cao\r\nRực rỡ, sắc nét, độ sáng cao - Màn hình OLED cao cấp, Super Retina XDR hỗ trợ HDR10, Dolby Vision\r\nChụp đêm ấn tượng - Night Mode cho 2 camera, thuật toán Deep Fusion, Smart HDR 3', '24000000', '1', 'iphone_12_mini_purple (1).png', 99),
-(30, 'Xiaomi Redmi Note 11 Pro Plus 5G', 2, 'Đón đầu thử thách, bứt phá mọi tựa game - Chip MediaTek Dimensity 920 5G 8 nhân siêu mạnh mẽ\r\nKhông gian giải trí đỉnh cao - Màn hình AMOLED 6.67 inch sắc nét, tần số quét 120Hz mượt mà\r\nSạc nhanh thần tốc, tràn đầy năng lượng - Dung lượng pin lớn 4500mAh, sạc nhanh đến 120W', '10000000', '1', '11-pro-plus-blue (1).jpg', 100),
-(31, 'Xiaomi Redmi Note 11', 2, 'Nâng cao trải nghiệm thị giác - Màn hình AMOLED 6.43\"\" Full HD+, công nghệ DotDisplay\r\nHiệu năng ấn tượng - Snapdragon 680 8 nhân cùng RAM 4GB, bộ nhớ 64GB\r\nChinh phục mọi khoảnh khắc - Cụm 4 camera 50MP, nhiều chế độ chụp tiện ích ', '10000000', '1', '800x800-1-640x640-5_2 (1).png', 100),
-(32, 'Xiaomi Mi 11 Lite 5G', 2, 'Không gian hiển thị thoải mái, chuyển động mượt - Màn hình tràn viền 6,55 inch, tần số quét 90Hz, HDR10+\r\nHiệu năng mạnh mẽ, ổn định - Chip Snapdragon 780G trên 5nm, 128GB bộ nhớ và 8GB RAM\r\nCamera chụp ảnh ấn tượng - Cụm 3 camera sau 64MP, chụp đêm rõ nét ', '10000000', '1', '800x800-1-640x640-5_2 (1).png', 100),
-(33, 'Xiaomi 11T', 2, 'Màn hình giải trí cực đỉnh - Màn hình AMOLED 6.67 inch Full HD+, 120Hz\r\nCấu hình vượt trội, chuyện động mượt mà - Chip MediaTek Dimensity 1200-Ultra cùng RAM 8GB\r\nĐẳng cấp camera chuyện nghiệp - Cụm camera sau 108 MP, hỗ trợ lấy nét, chống rung', '10000000', '1', 'xiaomi-mi-11t-1_1 (1).jpg', 100),
-(34, 'Xiaomi POCO X3 Pro', 2, 'Hiệu năng chuẩn Flagship - Snapdragon 860 8 nhân mạnh mẽ, RAM 6G, bộ nhớ UFS 3 1 truy xuất nhanh\r\nVuốt chạm mượt mà, hiển thị chất lượng - Màn hình 6 67 inch FullHD+ tần số quét 120Hz, hỗ trợ HDR10\r\nSử dụng liên tục, không cần chờ đợi - Sạc nhanh siêu tốc 33W, dung lượng pin lớn 5160mAh ', '10000000', '1', 'xiaomi-poco-x3-pro-2 (2).jpg', 100),
-(35, 'Xiaomi 12', 2, 'Cân mọi tác vụ với CPU thế hệ mới - Vi xử lí Snapdragon 8 Gen 1 cùng RAM 8 GB\r\nTrải ngiệm giải trí hoàn hảo với màn hình tràn viền sắc nét - Kích thước 6.28 inches, AMOLED\r\nCụm camera đa chức năng, lưu giữ mọi khoảnh khắc - Camera chính 50 MP đa dạng chế độ chụp', '10000000', '1', 't_i_xu_ng_1__3_10 (1).png', 100),
-(36, 'Xiaomi Redmi Note 11 128GB', 2, 'Nâng cao trải nghiệm thị giác - Màn hình AMOLED 6.43\" Full HD+, công nghệ DotDisplay\r\nHiệu năng ấn tượng - Snapdragon 680 8 nhân cùng RAM 4GB, bộ nhớ 128GB\r\nChinh phục mọi khoảnh khắc - Cụm 4 camera 50MP, nhiều chế độ chụp tiện ích ', '10000000', '1', '800x800-640x640-5.png', 100),
-(37, 'Xiaomi 12 Pro (5G)', 2, 'Cân mọi tác vụ với CPU thế hệ mới - Vi xử lí Snapdragon 8 Gen 1 cùng RAM 12GB\r\nTrải ngiệm giải trí hoàn hảo với màn hình tràn viền sắc nét - Kích thước 6.73 inches, AMOLED\r\nCụm camera đa chức năng, lưu giữ mọi khoảnh khắc - Camera chính 50 MP đa dạng chế độ chụp', '10000000', '1', 'xiaomi-12-pro_arenamobiles (1).jpg', 100),
-(38, 'Xiaomi 11T Pro', 2, 'Màn hình giải trí cực đỉnh - Màn hình AMOLED 6.67 inch Full HD+, 120Hz\r\nCấu hình vượt trội, cân mọi tựa game - Chip Snapdragon 888 5G, GPU Adreno 660 mạnh mẽ\r\nTrải nghiệm điện ảnh đỉnh cao - Cụm camera sau lên đến 108 MP siêu nét, quay phim 8K ', '10000000', '1', 'xiaomi-mi-11t-pro-price-in-usa-500x500 (1).jpg', 100),
-(39, 'Xiaomi Redmi 10 (4GB - 128GB)', 2, 'Trải nghiệm chất lượng hiển thị sắc nét, mượt mà - Màn hình 6.5\" FullHD+, tần số quét 90 Hz\r\nCấu hình ổn định,, sử dụng mượt mà - Chip Helio G88 mới, RAM 4 GB\r\nCamera cải tiến tối đa - Cụm 4 camera lên đến 50MP, chụp ảnh sắc nét', '10000000', '1', '001_2.jpg', 100),
-(40, 'Xiaomi Redmi Note 10', 2, 'Trải nghiệm điện ảnh vượt trội - Màn hình AMOLED kích thước 6.43 inch sắc nét, cảm biến ánh sáng 360 độ, chứng nhận bảo vệ mắt\r\nHiệu suất vượt tầm giá - Snapdragon 678 8 nhân mạnh mẽ, bộ nhớ UFS 2.2\r\nSạc đầy pin chỉ mất hơn 60 phút - Bộ sạc nhanh công suất 33W ấn tượng', '10000000', '1', 'xiaomi-redmi-note-10_1.jpg', 100),
-(41, 'Xiaomi Redmi 9A', 2, 'Thiết kế thời thượng - thân hình unibody mỏng, gọn và có thiết kế 3D độc đáo\r\nMàn hình sắc nét - 6.53 inch HD+, IPS LCD cho hình ảnh sống động\r\nVi xử lí tối ưu hoá trải nghiệm gaming - Chip MediaTek Helio G25, RAM 2GB, 32GB', '10000000', '1', 'redmi_9a_0005_background (1).jpg', 100),
-(42, 'Xiaomi Redmi Note 11S', 2, 'Thiết kế tinh tế, cuốn hút - Mỏng nhẹ thời trang, nhỏ gọn trong tay\r\nTrọn vẹn từng khung hình - Màn hình 6.43\" FHD+ AMOLED DotDisplay, 90Hz\r\nChụp ảnh chuyên nghiệp - Cụm 4 camera sau 108MP, hỗ trợ đa dạng chế độ chụp ', '10000000', '1', 'frame37917-640x640_1_.png', 100),
-(43, 'Xiaomi Redmi 10C 4GB 128GB', 2, 'Hiệu năng ổn định trên từng tác vụ, đa nhiệm mượt mà - Vi xử lí Snapdragon 680, RAM 4 GB\r\nCamera độ phân giải cao, hỗ trợ nhiều chế độ chụp - Cảm biến chính 50 MP, độ phân giải cao\r\nMàn hình giải trí sắc nét ấn tượng - Kích thước 6.71\", tấm nền IPS LCD độ phân giải HD+', '5000000', '1', 'xiaomi-redmi-10c-1-002.jpg', 99),
-(44, 'Xiaomi Redmi Note 10S', 2, 'Trải nghiệm hình ảnh chân thực - Màn hình AMOLED 6.43\", Full HD+\r\nCamera sau ấn tượng - 4 camera 64MP, đa dạng chức năng\r\nHiệu năng dẫn đầu xu thế - Chip MediaTek Helio G95, RAM 8GB', '5000000', '1', 'xiaomi-redmi-note-10s-xanh-1 (1).jpg', 100),
-(45, 'Xiaomi 11 Lite 5G NE', 2, 'Thiết kế mỏng nhẹ, thời thượng - Trọng lượng chỉ 158 g và mỏng 6.8 mm, cầm nắm thoải mái\r\nNâng tầm trải nghiệm giải trí - Màn hình AMOLED 6.55\", Full HD+ sắc nét, tần số quét 90Hz mượt mà\r\nLưu giữ mọi khoảnh khắc - Cụm 3 camera sau lên đến 64MP, quay video 4K sắc nét, chân thực', '5000000', '1', 'xiaomi-11-lite-5g-014_1.jpg', 100),
-(46, 'Xiaomi Mi 10T Pro 5G', 2, 'Màn hình siêu mượt, chi tiết và rõ ràng - Màn hình DotDisplay FullHD+ 6 67 inch, tần số quét 144Hz, gam màu rộng DCI- P3, TrueColor\r\nVận hành trơn tru, kết nối nhanh chóng - Snapdragon 865 5G hàng đầu, RAM 8GB, bộ nhớ UFS 3.1 tốc độ cao\r\nCamera sáng tạo vô hạn - Bộ ba camera 108MP tích hợp AI thông minh, quay phim 8K, chụp ảnh độ phân giải 33MP', '5000000', '1', 'xiaomi-mi-10t-pro_2_.jpg', 99),
-(47, 'OPPO Reno6 Z 5G', 3, 'Thiết kế ấn tượng, màu sắc cá tính - Thiết kế tràn viền, mỏng nhẹ chỉ 173g\r\nTăng tốc kết nối, dẫn đầu xu hướng - Dimensity 800U 5G 8 nhân mạnh mẽ, kết nối 5G siêu nhanh\r\nChuyên gia nhiếp ảnh chân dung - Bộ 3 camera lên tới 64 MP, sắc nét, ấn tượng\r\nMàn hình lớn, sắc nét với tốc độ làm mới cao - Màn hình AMOLED 6.43 inch Full HD, 60 Hz', '5000000', '1', 'oppo_reno6 (1).jpg', 100),
-(49, 'OPPO A95', 3, 'Thiết kế mỏng nhẹ hiện đại - Mỏng chỉ 7.95mm, nhẹ chỉ 175g, màu sắc sành điệu\r\nHiển thị sắc nét mọi khung hình - Màn hình Super AMOLED FullHD+ 6.43\"\r\nVi xử lý mạnh mẽ - Chip Snapdragon 662, RAM 8GB ', '5000000', '1', 'reno6-1_1.jpg', 100),
-(50, 'OPPO A95', 3, 'Thiết kế mỏng nhẹ hiện đại - Mỏng chỉ 7.95mm, nhẹ chỉ 175g, màu sắc sành điệu\r\nHiển thị sắc nét mọi khung hình - Màn hình Super AMOLED FullHD+ 6.43\"\r\nVi xử lý mạnh mẽ - Chip Snapdragon 662, RAM 8GB', '5000000', '1', 'combo_a95_-_en_-_cmyk (1).jpg', 100),
-(52, 'OPPO Reno7 4G (8GB - 128GB)', 3, 'Kích thước màn hình	6.43 inches\r\nCông nghệ màn hình	AMOLED\r\nCamera trước	32MP, f/2.4; FOV 85°\r\nChipset	Snapdragon™ 680\r\nDung lượng RAM	8 GB ', '5000000', '1', '_0001_combo_-_reno4_pro_-_white (1).jpg', 99),
-(53, 'OPPO Reno7 (5G)', 3, 'Trải nghiệm mọi tác vụ mượt mà - Chip MediaTek Dimensity 900 5G mạnh mẽ, RAM khủng 8 GB\r\nGhi lại những câu chuyện sống động màu sắc - Camera chính 64MP, camera selfie độ phân giải cao\r\nNăng lượng bền bỉ cho cả ngày dài - Viên pin lớn 4500 mAh cùng sạc nhanh 65 W ', '5000000', '1', 'oppo-reno-5_3_ (1).jpg', 100),
-(54, 'Samsung Galaxy S22 Ultra (8GB - 128GB)', 4, 'Vi xử lý mạnh mẽ nhất Galaxy - Snapdragon 8 Gen 1 (4 nm)\r\nCamera mắt thần bóng đêm Nightography - Chụp đêm cực đỉnh\r\nS Pen đầu tiên trên Galaxy S - Độ trễ thấp, dễ thao tác', '10000000', '1', 'sm-s908_galaxys22ultra_front_green_211119 (1).jpg', 100),
-(55, 'Samsung Galaxy Note 20 Ultra 5G', 4, 'Sang trọng, cao cấp - Màu sắc độc đáo và cuốn hút\r\nChụp ảnh chuyên nghiệp - Bộ 3 camera hỗ trợ Zoom xa đến 30X\r\nGhi chú nhanh chóng, chính xác với bút S- Pen thế hệ mới ', '10000000', '1', 'yellow_final_2.jpg', 100),
-(56, 'Samsung Galaxy A73', 4, 'Camera chất lượng, bắt trọn từng khoảng khắc - Cụm 4 camera với cảm biến chính lên đến 108 MP\r\nThưởng thức không gian giải trí cực đỉnh - Màn hình lớn 6.7 inch, độ phân giải Full HD+, 120Hz mượt mà\r\nCấu hình Galaxy A73 5G được nâng cấp mạnh với chip Snapdragon 778G, RAM lên đến 8 GB', '10000000', '1', 'samsung-galaxy-a73-1-600x600.jpg', 100),
-(58, 'Samsung Galaxy A32', 4, 'Màn hình siêu mượt, hình ảnh sắc nét - Màn hình Super AMOLED FullHD, tần số quét 90Hz\r\nThiết kế tối giản, thể hiện phong cách - Màu sắc trẻ trung, mặt lưng bóng bẩy, cụm camera thiết kế mới.\r\nGhi lại mọi khoảnh khắc - Cụm camera 64MP tuyệt đỉnh, camera selfie 20MP chất lượng.', '5000000', '1', 'samsung-galaxy-a32-20.jpg', 99);
+(62, 'Xe Đạp Trẻ Em Youth YBQ 14 – Bánh 14 Inch', 1, 'Xe Đạp Trẻ Em Youth YBQ, Bánh 14 Inches không chỉ là một phương tiện di chuyển, mà còn là một cách tuyệt vời để bé khám phá thế giới xung quanh một cách sáng tạo và an toàn.\r\n\r\nChơi Và Học:\r\n\r\nVới thiết kế chức năng tập thăng bằng, Xe Đạp Trẻ Em Youth YBQ giúp bé phát triển kỹ năng cân bằng và tự tin từ những bước đi đầu tiên. Đặc biệt, xe được trang bị đèn LED thú vị trên khung sườn, tạo ra không gian đạp xe vui nhộn cho bé cả vào ban ngày lẫn buổi tối.\r\n\r\nAn Toàn Và Đáng Tin Cậy:\r\n\r\nKhung xe chắc chắn và hệ thống phanh hiệu quả giúp đảm bảo an toàn cho bé trong mọi chuyến đi. Bố mẹ có thể yên tâm khi bé tham gia vào các hoạt động ngoài trời.\r\n\r\nTrải Nghiệm Độc Đáo:\r\n\r\nXe Đạp Trẻ Em Youth YBQ không chỉ là một phương tiện di chuyển, mà còn là một người bạn đồng hành đáng tin cậy, giúp bé tạo ra những kỷ niệm đáng nhớ và trải nghiệm thú vị. Chọn ngay chiếc xe đầu tiên cho bạn với Xe Đạp Trẻ Em Youth YBQ cực kỳ chất lượng nhé! ', '1090000', '1', 'YBQ_Yellow-768x768.jpg', 100),
+(63, 'Xe Đạp Trẻ Em Youth YBQ 14 – Bánh 14 Inche', 1, '', '1090000', '1', 'YBQ_Yellow-768x768.jpg', 160),
+(64, 'Xe Đạp Trẻ Em Youth MAX BIKE Nina 14 – Bánh 14 Inches', 1, '1. Thiết Kế Ngọt Ngào\r\nXe đạp Youth MAX BIKE Nina 14 được thiết kế với gam màu pastel dễ thương, làm nổi bật sự nữ tính và dễ thương của mọi công chúa nhỏ. Mỗi chi tiết chăm chút tỉ mỉ từ yên xe đến ghi đông, tạo nên một diện mạo đầy cuốn hút và đáng yêu.\r\n\r\n2. Bánh Phụ Dễ Dàng Tập Làm Quen Xe Đạp\r\nVới trang bị bánh phụ, chiếc xe đạp Nina 14 giúp các bé dễ dàng học lái và tự tin hơn khi thử sức trên con đường. Quá trình học tập và rèn luyện kỹ năng điều khiển xe sẽ trở nên thú vị và an toàn hơn bao giờ hết.\r\n\r\n3. Khung Thép Chắc Chắn, Bền Bỉ\r\nKhung xe đạp được làm từ chất liệu thép chắc chắn, đảm bảo độ bền và độ an toàn tối đa cho người sử dụng, đặc biệt là trẻ em nhỏ. Youth MAX BIKE Nina 14 là sự lựa chọn đáng tin cậy cho bậc phụ huynh lo lắng về sức khỏe và an toàn của con em.\r\n\r\n4. Trang Bị Đèn LED Đẹp Mắt\r\nĐiểm nhấn đặc biệt của chiếc xe đạp Youth MAX BIKE Nina 14 là bộ đèn LED trang trí xinh xắn được tích hợp trên khung sườn. Không chỉ tăng cường sự an toàn khi di chuyển vào buổi tối mà còn tạo điểm nhấn thẩm mỹ cho chiếc xe, khiến bé yêu tự hào khi sở hữu.\r\n\r\n5. Sự Thích Mê Cho Công Chúa Nhỏ\r\nVới sự kết hợp hoàn hảo giữa thiết kế đẹp mắt, tính năng an toàn và sự tiện lợi, chiếc xe đạp trẻ em Youth MAX BIKE Nina 14 chắc chắn sẽ trở thành món quà không thể thiếu trong những dịp lễ quan trọng của bé.\r\n\r\nYouth MAX BIKE Nina 14 không chỉ là một chiếc xe đạp thông thường mà còn là người bạn đồng hành tin cậy của các bé trên mọi chặng đường. Với thiết kế đẹp mắt, chất bền bỉ và tính an toàn, đây sẽ là lựa chọn hoàn hảo cho các phụ huynh muốn', '10990000', '1', 'Lisa_Pink.jpg', 110),
+(65, 'Xe Đạp Trẻ Em 12 Inch GH Bike [GIÁ RẺ]', 1, 'Mô tả chung\r\nMã sản phẩm: 12T11\r\nThương Hiệu: GH BIKE\r\nSản Xuất: Đài Loan\r\nKích Thước: 12 Inch\r\nMàu Sắc: Đỏ, Xanh, Vàng, Cam và Lá\r\nĐộ tuổi thích hợp: 2 tuổi – 4 tuổi\r\nTìm hiểu thương hiệu GH Bike\r\nNMT BIKE là thương hiệu xe đạp có xuất xứ từ Đài Loan. Sau nhiều năm hình thành và phát triển, NMT BIKE đã không ngừng nâng cao chất lượng sản phẩm mà mình kinh doanh. Vì vậy, nhiều hộ gia đình Việt Nam đã tin tưởng sử dụng các sản phẩm NMT BIKE không chỉ có chất lượng tốt mà còn có giá thành cạnh tranh.', '890000', '1', '6-600x400-1.jpg', 119),
+(66, 'Xe Đạp Trẻ Em HMT Inox 20 Inch – Hàng Công Ty', 1, 'Mô tả chung\r\nMã sản phẩm: 20@500/72\r\nThương Hiệu: HMT\r\nSản Xuất: Việt Nam\r\nKích Thước: 20 Inch\r\nMàu Sắc: Xanh dương, Cam, Xanh lá\r\nĐộ tuổi thích hợp: 7 tuổi – 10 tuổi\r\nXe Đạp Trẻ Em 20 Inch @500 Inox nhỏ gọn, cá tính\r\nXe đạp trẻ em HMT là dòng xe tiêu chuẩn được sản xuất theo tiêu chuẩn Việt Nam, với khung Inox siêu bền, được trang trí niềng xe nhiều màu sắc bắt mắt, thiết kế phong cách thể thao cá tính, chắc chắn sẽ là người bạn đồng hành tuyệt vời cho các bé.\r\n\r\nXe Đạp là món quà đặc biệt của các bậc cha mẹ dành cho đứa con thân yêu, giúp bé phát triển về thể chất cũng như tinh thần. Hơn nữa, cho bé chạy xe chính là cách tạo cho bé có trách nhiệm từ nhỏ và học cách tự lập.', '1290000', '1', 'xe-dap-tre-em-500-inox-20-inch-768x510.jpg', 100),
+(67, 'Xe Đạp Trẻ Em XAMING Nữ 2 Gióng 12 Inch', 1, 'Mô Tả Cơ Bản \r\nMã sản phẩm: 12g25\r\nThương Hiệu: XAMING\r\nSản Xuất: Đài Loan\r\nKích Thước: 12 Inch\r\nMàu Sắc: Đỏ, Xanh Tím và Hồng\r\nĐộ tuổi thích hợp: 2 tuổi – 4 tuổi. ', '1350000', '1', 'Xe-Dap-Tre-Em-XAMING-Nu-2-Giong-12-Inch-2-768x510.png', 100),
+(68, 'Xe Đạp Trẻ Em Xaming Baga 20 Inch', 1, 'Mô Tả Cơ Bản\r\nMã sản phẩm: 20T22\r\nThương hiệu: Xaming\r\nSản xuất: Đài Loan\r\nKích thước: 20 Inch\r\nPhân loại: Xe đạp trẻ em\r\nMàu sắc: Đỏ, Xanh\r\nĐộ tuổi thích hợp: 7 tuổi – 10 tuổi, chiều cao 1m3-1m45 ', '1550000', '1', 'hinh-xe-dap-tre-em-xaming-t22-20-inch-768x510.jpg', 109),
+(69, 'Xe Đạp Địa Hình Fascino FS126S 26 Inch', 2, 'Mô Tả Cơ Bản\r\nMã sản phẩm: FS126S\r\nThương Hiệu: Fascino\r\nSản xuất: Đài Loan\r\nKích thước: 26 inch\r\nMàu sắc: Đen Đỏ, Đen Xanh, Trắng Ghi, Xanh Đổi màu 71, Xanh Đổi màu 73\r\nPhân loại: Xe đạp địa hình', '2490000', '1', 'fascino-fs126s-26-inch-xanh-den-768x510.jpg', 100),
+(70, 'Xe Đạp Địa Hình MTB Shukyo S650 24 Inch', 2, 'Mô Tả Cơ Bản\r\nMã sản phẩm: 24S650\r\nThương Hiệu: Shukyo\r\nKích thước: 24 Inch\r\nMàu sắc: Đen đỏ; Đen cam; Đen xanh; Đen lá\r\nPhân loại: Xe đạp địa hình ', '2490000', '1', 'xe-dap-dia-hinh-shukyo-s650-26-inch-1-1-768x510.jpg', 100),
+(71, 'Xe Đạp Địa Hình MTB Shukyo S400 24 Inch – Khung Thép | Shimano | Phanh Đĩa', 2, 'Mã sản phẩm: 24s400\r\nThương hiệu: Shukyo\r\nMàu sắc: Đen đỏ; Đen xanh; Trắng đỏ; Trắng xanh; Xanh ngọc\r\nKích thước: 26 Inch\r\nPhân loại: Xe đạp địa hình ', '2550000', '1', 'xe-dap-dia-hinh-mtb-shukyo-s400-2-768x510.jpg', 99),
+(72, 'Xe Đạp Địa Hình Fornix FX24 24 Inch', 2, 'Mã sản phẩm: FX24\r\nThương hiệu: Fornix\r\nKích thước: 24 inch\r\nNhập khẩu: Đài Loan\r\nMàu sắc: Đen đỏ, Đen lá, Đen xanh, Đen cam, Xanh cam, Đỏ Đen\r\nĐộ tuổi thích hợp: Trên 10 tuổi ', '3290000', '1', 'xe-dap-dia-hinh-fornix-fx24-24-inch-mau-trang-do-768x510.jpg', 100),
+(73, 'Xe Đạp Địa Hình MTB Shukyo S200 26 Inch – Khung Thép | Shimano | Phanh Đĩa', 2, 'Mã sản phẩm: 26s200\r\nThương hiệu: Shukyo\r\nMàu sắc: Ghi vàng, Ghi cam, Đen đỏ, Đen xanh\r\nKích thước: 26 Inch\r\nPhân loại: Xe đạp địa hình ', '2790000', '1', 'xe-dap-dia-hinh-mtb-shukyo-s400-2-768x510.jpg', 99);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
+-- Cấu trúc bảng cho bảng `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -303,10 +284,10 @@ CREATE TABLE `tbl_user` (
   `email` varchar(100) NOT NULL,
   `user_name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tbl_user`
+-- Đang đổ dữ liệu cho bảng `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`id_user`, `hoten`, `sdt`, `email`, `user_name`, `password`) VALUES
@@ -314,32 +295,33 @@ INSERT INTO `tbl_user` (`id_user`, `hoten`, `sdt`, `email`, `user_name`, `passwo
 (12, 'admin', '0123456789', 'aotich3@gmail.com', 'admin', '$2y$10$cx3e1uUo/bakx.9tSxyjh.CKHiREAdZ.Kj5zDAURJIoX9RZNLAiyy'),
 (13, 'admin', '0123456789', 'aotich1000@gmail.com', 'aotich1000', '$2y$10$5o.DSZuJVOMkZ0TvTsxcMu3J1vkn65jSyG40C0oQU0dLTM5JZMrWm'),
 (14, 'abc', '0123456789', 'asd@d.com', 'admin2', '$2y$10$o6Cy3cSitXVtJR6mFJ35zOuWm8NEvPgKIiS7FhhrMkUq/6uBrIsC2'),
-(15, 'Ai-chan', '0123456789', 'aotich2000@gmail.com', 'aotich1234', '$2y$10$rYz.W7R4xHH0dwv8fQTSS.gb3TD75tTW2S5JiskIqlE79SVPRPZta');
+(15, 'Ai-chan', '0123456789', 'aotich2000@gmail.com', 'aotich1234', '$2y$10$rYz.W7R4xHH0dwv8fQTSS.gb3TD75tTW2S5JiskIqlE79SVPRPZta'),
+(16, 'nguyễn văn a', '0123456789', 'aotich10@gmail.com', 'admin5', '$2y$10$rPjqCq0qKe1kQfUWlhx6le6xhtgCieV2vDM/hgP.s6JESNayk/Ciu');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `tbl_admin`
+-- Chỉ mục cho bảng `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indexes for table `tbl_banner`
+-- Chỉ mục cho bảng `tbl_banner`
 --
 ALTER TABLE `tbl_banner`
   ADD PRIMARY KEY (`id_banner`);
 
 --
--- Indexes for table `tbl_chitiethoadon`
+-- Chỉ mục cho bảng `tbl_chitiethoadon`
 --
 ALTER TABLE `tbl_chitiethoadon`
   ADD KEY `abc` (`id_hoadon`);
 
 --
--- Indexes for table `tbl_chitietphieunhap`
+-- Chỉ mục cho bảng `tbl_chitietphieunhap`
 --
 ALTER TABLE `tbl_chitietphieunhap`
   ADD PRIMARY KEY (`id_phieunhap`,`id_sanpham`),
@@ -348,119 +330,119 @@ ALTER TABLE `tbl_chitietphieunhap`
   ADD KEY `id_ncc` (`id_ncc`);
 
 --
--- Indexes for table `tbl_hoadon`
+-- Chỉ mục cho bảng `tbl_hoadon`
 --
 ALTER TABLE `tbl_hoadon`
   ADD PRIMARY KEY (`id_hoadon`),
   ADD KEY `hoadon_user` (`id_user`);
 
 --
--- Indexes for table `tbl_nhacungcap`
+-- Chỉ mục cho bảng `tbl_nhacungcap`
 --
 ALTER TABLE `tbl_nhacungcap`
   ADD PRIMARY KEY (`id_nhacungcap`);
 
 --
--- Indexes for table `tbl_permission`
+-- Chỉ mục cho bảng `tbl_permission`
 --
 ALTER TABLE `tbl_permission`
   ADD PRIMARY KEY (`id_permis`);
 
 --
--- Indexes for table `tbl_phanloaisp`
+-- Chỉ mục cho bảng `tbl_phanloaisp`
 --
 ALTER TABLE `tbl_phanloaisp`
   ADD PRIMARY KEY (`id_loaisp`);
 
 --
--- Indexes for table `tbl_phieunhap`
+-- Chỉ mục cho bảng `tbl_phieunhap`
 --
 ALTER TABLE `tbl_phieunhap`
   ADD PRIMARY KEY (`id_phieunhap`);
 
 --
--- Indexes for table `tbl_sanpham`
+-- Chỉ mục cho bảng `tbl_sanpham`
 --
 ALTER TABLE `tbl_sanpham`
   ADD PRIMARY KEY (`id_sanpham`),
   ADD KEY `sdq` (`loaisp`);
 
 --
--- Indexes for table `tbl_user`
+-- Chỉ mục cho bảng `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `tbl_admin`
+-- AUTO_INCREMENT cho bảng `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `tbl_banner`
+-- AUTO_INCREMENT cho bảng `tbl_banner`
 --
 ALTER TABLE `tbl_banner`
-  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `tbl_hoadon`
+-- AUTO_INCREMENT cho bảng `tbl_hoadon`
 --
 ALTER TABLE `tbl_hoadon`
-  MODIFY `id_hoadon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_hoadon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
--- AUTO_INCREMENT for table `tbl_nhacungcap`
+-- AUTO_INCREMENT cho bảng `tbl_nhacungcap`
 --
 ALTER TABLE `tbl_nhacungcap`
   MODIFY `id_nhacungcap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tbl_permission`
+-- AUTO_INCREMENT cho bảng `tbl_permission`
 --
 ALTER TABLE `tbl_permission`
-  MODIFY `id_permis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_permis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `tbl_phanloaisp`
+-- AUTO_INCREMENT cho bảng `tbl_phanloaisp`
 --
 ALTER TABLE `tbl_phanloaisp`
-  MODIFY `id_loaisp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_loaisp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `tbl_phieunhap`
+-- AUTO_INCREMENT cho bảng `tbl_phieunhap`
 --
 ALTER TABLE `tbl_phieunhap`
-  MODIFY `id_phieunhap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_phieunhap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `tbl_sanpham`
+-- AUTO_INCREMENT cho bảng `tbl_sanpham`
 --
 ALTER TABLE `tbl_sanpham`
-  MODIFY `id_sanpham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_sanpham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
--- AUTO_INCREMENT for table `tbl_user`
+-- AUTO_INCREMENT cho bảng `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `tbl_chitiethoadon`
+-- Các ràng buộc cho bảng `tbl_chitiethoadon`
 --
 ALTER TABLE `tbl_chitiethoadon`
   ADD CONSTRAINT `abc` FOREIGN KEY (`id_hoadon`) REFERENCES `tbl_hoadon` (`id_hoadon`);
 
 --
--- Constraints for table `tbl_chitietphieunhap`
+-- Các ràng buộc cho bảng `tbl_chitietphieunhap`
 --
 ALTER TABLE `tbl_chitietphieunhap`
   ADD CONSTRAINT `id_ncc` FOREIGN KEY (`id_ncc`) REFERENCES `tbl_nhacungcap` (`id_nhacungcap`),
@@ -468,13 +450,13 @@ ALTER TABLE `tbl_chitietphieunhap`
   ADD CONSTRAINT `sanphamnhap` FOREIGN KEY (`id_sanpham`) REFERENCES `tbl_sanpham` (`id_sanpham`);
 
 --
--- Constraints for table `tbl_hoadon`
+-- Các ràng buộc cho bảng `tbl_hoadon`
 --
 ALTER TABLE `tbl_hoadon`
   ADD CONSTRAINT `hoadon_user` FOREIGN KEY (`id_user`) REFERENCES `tbl_user` (`id_user`);
 
 --
--- Constraints for table `tbl_sanpham`
+-- Các ràng buộc cho bảng `tbl_sanpham`
 --
 ALTER TABLE `tbl_sanpham`
   ADD CONSTRAINT `sdq` FOREIGN KEY (`loaisp`) REFERENCES `tbl_phanloaisp` (`id_loaisp`);
